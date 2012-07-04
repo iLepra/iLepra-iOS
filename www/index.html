@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <title>iLepra</title>
+    <!-- jquery mobile style -->
+    <link rel="stylesheet"  href="css/jquery.mobile.min.css" />
+
+    <!-- app style -->
+    <link rel="stylesheet"  href="css/main.css" />
+
+    <!-- phonegap  -->
+    <script src="libs/cordova-1.9.0.js"></script>
+
+    <!-- jquery -->
+    <script src="libs/jquery.min.js"></script>
+    <!-- jquery mobile -->
+    <script src="libs/jquery.mobile.min.js"></script>
+
+    <!-- templates engine -->
+    <script src="libs/underscore-min.js"></script>
+
+    <!-- iLepra library -->
+    <script src="lepra/lepra.min.js"></script>
+    
+    <!-- main logic -->
+    <script src="js/logic.min.js"></script>
+</head>
+<body>
+	<!-- BLANK SPLASH FOR LOADING STATE -->
+	<div data-role="page" id="splashPage">
+	</div>
+	
+	<!-- LOGIN PAGE -->
+	<div data-role="page" id="loginPage" data-theme="d">
+	    <div data-role="content">
+	
+	        <input type="text" name="username" id="username" placeholder="Логин" autocorrect="off" autocapitalize="off"/>
+	
+	        <input type="password" name="pass" id="pass" placeholder="Пароль"/>
+	
+	        <div style="text-align:center; margin-top: 5px;">
+	            <img id="captchaImage" />
+	        </div>
+	
+	        <input type="text" name="captcha" id="captcha" placeholder="Капча" autocorrect="off" autocapitalize="off"/>
+	
+	        <br/>
+	
+	        <input type="checkbox" name="rememberme" id="rememberme" />
+	        <label for="rememberme">Запомнить меня</label>
+	
+	        <br/>
+	
+	        <a href="#" id="loginButton" data-role="button">Yarr!</a>
+	    </div>
+	</div>
+	
+	<!-- MAIN POSTS PAGE -->
+	<div data-role="page" id="postsPage">
+	    <div data-role="content">
+	        <div style="position: absolute; display: none;">
+	            <select id="layoutSelect" data-mini="true" data-inline="true">
+	                <option value="main">Главная</option>
+	                <option value="all">Все</option>
+	                <option value="sub">Подлепры</option>
+	            </select>
+	        </div>
+	        <ul data-role="listview" id="postsList">
+	        </ul>
+	        <br/>
+	        <a href="#" data-role="button" id="morePostsButton" style="display:none;">Еще? Еще!</a>
+	    </div>
+	</div>
+	
+	<!-- MYSTUFF POSTS PAGE -->
+	<div data-role="page" id="mystuffPage">	
+	    <div data-role="content">
+	        <ul data-role="listview" id="mystuffList" data-divider-theme="a">
+	        </ul>
+	        <br/>
+	        <a href="#" data-role="button" id="moreMystuffButton" style="display:none;">Еще? Еще!</a>
+	    </div>
+	</div>
+	
+	<!-- INBOX POSTS PAGE -->
+	<div data-role="page" id="inboxPage">
+	    <div data-role="content">
+	        <ul data-role="listview" id="inboxList" data-divider-theme="a">
+	        </ul>
+	        <br/>
+	        <a href="#" data-role="button" id="moreInboxButton" style="display:none;">Еще? Еще!</a>
+	    </div>
+	</div>
+	
+	<!-- FAVS PAGE -->
+	<div data-role="page" id="favsPage">
+	    <div data-role="content">
+	        <ul data-role="listview" id="favsList" data-divider-theme="a">
+	        </ul>
+	        <br/>
+	        <a href="#" data-role="button" id="moreFavsButton" style="display:none;">Еще? Еще!</a>
+	    </div>
+	</div>
+	
+	<!-- SUBS PAGE -->
+	<div data-role="page" id="subsPage">
+	    <div data-role="content">
+	        <ul data-role="listview" id="subsList">
+	        </ul>
+	    </div>
+	</div>
+	
+	<!-- CHAT PAGE -->
+	<div data-role="page" id="chatPage">
+	    <div data-role="content">
+	        <ul data-role="listview" id="chatList" data-divider-theme="a">
+	        </ul>
+	    </div>
+	</div>
+	
+	<!-- GOV PAGE -->
+	<div data-role="page" id="govPage">
+	    <div data-role="content">
+	        <p id="president">
+	        </p>
+	    </div>
+	</div>
+
+	<!-- FULL POST PAGE -->
+	<div data-role="page" id="fullPostPage">
+	    <div data-role="content">
+	        <div id="postContent"></div>
+
+	        <div class="postMenu">
+	            <a href="#" id="replyPost" style="display: none;"><img src="css/img/reply_32.png" /></a>
+
+	            <div data-role="controlgroup" data-type="horizontal" data-mini="true" style="float:right; width:70px;">
+	                <a href="#" id="postVoteup" data-role="button" style="opacity: 0.6;" data-theme="a">+</a>
+	                <a href="#" id="postVotedown" data-role="button" style="opacity: 0.6;" data-theme="a">-</a>
+	            </div>
+	        </div>
+
+	        <div class="ui-footer ui-bar-a" style="padding-left:4px; margin-left: -15px; margin-right: -15px;">
+	            <b id="postUser">username</b>,
+	            <span style="font-size:80%;">
+	                <img src="css/img/comment_16.png" class="iconImage"> <span id="postComments">548 / 548</span>,
+	                <span id="postTime">сегодня в 11.26</span>
+	            </span>,
+	            <span style="font-weight: bold;" id="postRating">462</span>
+	        </div>
+
+	        <div data-role="controlgroup" data-type="horizontal" id="postCommentsButtonsGroup">
+	            <a href="#" id="postCommentsButton" data-role="button">Все комментарии</a>
+	            <a href="#" id="postNewCommentsButton" data-role="button">Новые</a>
+	        </div>
+	    </div>
+
+	    <div data-role="content" id="postCommentsContent" style="display:none; padding-top: 0px;">
+	        <!-- new / all selector -->
+	        <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+	            <a href="#" id="allComments" data-role="button" data-theme="a" class="ui-btn-active">Все</a>
+	            <a href="#" id="newComments" data-role="button" data-theme="a">Новые</a>
+	        </div>
+	        <br/>
+
+	        <!-- comments list -->
+	        <ul data-role="listview" id="commentsList" data-icon="false" data-split-icon="false" data-divider-theme="a">
+	        </ul>
+
+	        <br/>
+	        <div data-role="controlgroup" data-type="horizontal" id="commentsButtons" style="padding-top: 10px;">
+	            <a href="#" data-role="button" id="moreCommentsButton" style="width:69%;">Еще? Еще!</a>
+	            <a href="#" data-role="button" id="allCommentsButton" style="width:29%;">Все</a>
+	        </div>
+	    </div>
+
+	    <div data-role="footer" data-position="fixed" data-theme="c" style="display:none; min-height: 40px;" id="commentsNavBar">
+	        <div class="postToolbarElement" id="commentsNavButtons">
+	            <a href="#" id="prevnew" style="float:left;"><img src="css/img/voteup_32.png" /></a>
+	            <a href="#" id="nextnew" style="float:right;"><img src="css/img/votedown_32.png" /></a>
+	        </div>
+	        <dir class="postToolbarElement" style="display: none;" id="commentsInputBar">
+	            <div class="ui-block-a" style="width:79%">
+	                <input type="text" id="commentInput" value="" placeholder="Написать комментарий" data-mini='true'  />
+	            </div>
+	            <div class="ui-block-b" style="width:19%">
+	                <a href="#" id="submitComment" data-role="button" data-mini='true' class="maxedFootButton">OK</a>
+	            </div>
+	        </dir>
+	    </div>
+	</div>
+
+	<!-- PROFILE PAGE -->
+	<div data-role="page" id="profilePage">
+	    <div data-role="content" id="profileContent" style="display:none;">
+	        <div style="text-align: center;">
+	            <img id="userImage" />
+	        </div>
+	
+	        <ul data-role="listview" data-inset="true" data-divider-theme="a">
+	            <li data-role="list-divider" id="fullName"></li>
+	            <li id="userRegdate"></li>
+	            <li id="userLocation"></li>
+	            <li id="userNumber"></li>
+	            <li id="userKarma"></li>
+	        </ul>
+	
+	        <ul data-role="listview" data-inset="true" data-divider-theme="a">
+	            <li data-role="list-divider">Статистика</li>
+	            <li id="userStat"></li>
+	            <li id="userVote"></li>
+	            <li id="userVoteCount"></li>
+	        </ul>
+	
+	        <ul data-role="listview" id="contactsList" data-inset="true" data-divider-theme="a">
+	            <li data-role="list-divider">Контакты</li>
+	        </ul>
+	
+	        <div data-role="collapsible" data-collapsed="false">
+	            <h3>Дополнительно</h3>
+	            <p id="userDescription"></p>
+	        </div>
+	    </div>
+	</div>
+
+	<!-- SUBLEPRA POSTS -->
+	<div data-role="page" id="subpostsPage">
+	    <div data-role="content">
+	        <ul data-role="listview" id="subpostsList" data-divider-theme="a">
+	        </ul>
+	        <br/>
+	        <a href="#" data-role="button" id="moreSubpostsButton" style="display:none;">Еще? Еще!</a>
+	    </div>
+	</div>
+
+</body>
+</html>
