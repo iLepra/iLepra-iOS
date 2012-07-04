@@ -36,7 +36,7 @@ var profileName;
             var data = iLepra.profile.data;
 
             // set username
-            //Ti.App.fireEvent("iLepraToolbarButtons", {title: data.username});
+            window.plugins.nativeUI.setTitle(data.username);
 
             // set userpic
             if( data.userpic != undefined )

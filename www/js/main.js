@@ -1,5 +1,6 @@
 // prepare
-window.addEventListener('load', function(){
+//window.addEventListener('load', function(){
+document.addEventListener("deviceready", function(){
     ////////
     var getLatestPosts = function(){
         // on posts data
@@ -31,7 +32,8 @@ window.addEventListener('load', function(){
         //Ti.App.fireEvent("iLepraToolbarButtons", {showMenu: true});
     });
     $(document).on("pageshow", "#loginPage", function(){
-        //Ti.App.fireEvent("iLepraToolbarButtons", {showMenu: false, title: "iLepra"});
+        //Ti.App.fireEvent("iLepraToolbarButtons", {showMenu: false});
+        window.plugins.nativeUI.setTitle("iLepra");
     	
         // load captcha
         $("#captchaImage").attr('src', iLepra.captchaURL);
@@ -78,8 +80,7 @@ window.addEventListener('load', function(){
             iLepra.tryLogin(data);
         });
         
-        //Ti.App
-        $(document).trigger('iLepraInitDone');
+        window.plugins.nativeUI.hideSplash();
     });
 
     // Init iLepra class

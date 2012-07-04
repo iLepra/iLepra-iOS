@@ -30,8 +30,8 @@
 @implementation MainViewController
 @synthesize MainView;
 @synthesize MenuTable;
-@synthesize MenuTitle;
 @synthesize MainTitle;
+@synthesize SplashView;
 @synthesize MenuView;
 @synthesize MenuButton;
 
@@ -58,7 +58,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     menuItems = [[NSMutableArray alloc] init];
     
     NSArray *mainSectionArray = [NSArray arrayWithObjects:@"Посты", @"Мои вещи", @"Инбокс", nil];
@@ -77,6 +76,8 @@
     [menuItems addObject:myStuffDict];
     [menuItems addObject:lepraDict];
     [menuItems addObject:miscDict];
+    
+    [MenuTable setSeparatorColor:[UIColor darkGrayColor]];
 }
 
 - (void) viewDidUnload
@@ -85,8 +86,8 @@
     [self setMenuButton:nil];
     [self setMainView:nil];
     [self setMenuTable:nil];
-    [self setMenuTitle:nil];
     [self setMainTitle:nil];
+    [self setSplashView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -151,7 +152,7 @@
     
     CGRect bounds = theWebView.frame;
     bounds.origin.y = 44;
-    bounds.size.height -= 64; 
+    bounds.size.height -= 44; 
     
     theWebView.frame = bounds;
 
@@ -208,9 +209,34 @@
     NSArray *array = [dictionary objectForKey:[[dictionary allKeys] objectAtIndex:0]];
     int ind = indexPath.row;
     NSString *cellValue = [array objectAtIndex:ind];
-    cell.text = cellValue;
+    cell.textLabel.text = cellValue;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [cell setBackgroundColor:[UIColor blackColor]];
+    cell.textLabel.textColor = [UIColor whiteColor];
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section 
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 24)];
+    [headerView setBackgroundColor:[UIColor darkGrayColor]];
+    
+	// create the button object
+	UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+	headerLabel.backgroundColor = [UIColor clearColor];
+	headerLabel.opaque = NO;
+	headerLabel.textColor = [UIColor whiteColor];
+	headerLabel.highlightedTextColor = [UIColor lightGrayColor]; 
+	headerLabel.font = [UIFont boldSystemFontOfSize:16];
+	headerLabel.frame = CGRectMake(10.0, 0.0, (tableView.bounds.size.width - 10.0), 24.0);
+    
+	headerLabel.text = [[[menuItems objectAtIndex:section] allKeys] objectAtIndex:0];
+	[headerView addSubview:headerLabel];
+    
+    return headerView;
 }
 
 - (IBAction)menuButtonClick:(id)sender {

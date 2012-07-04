@@ -28,6 +28,8 @@
 	</array>
 	<key>Plugins</key>
 	<dict>
+		<key>NativeUI</key>
+		<string>NativeUI</string>
 		<key>Logger</key>
 		<string>CDVLogger</string>
 		<key>Compass</key>

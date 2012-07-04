@@ -44,14 +44,15 @@ var lastPages = [];
 
     // render page on creation
     //Ti.App
-    $(document).addEventListener("iLepraPostBack", function(){
+    $(document).on("iLepraPostBack", function(){
        $.mobile.changePage(lastPages.pop(), {reverse: true}); 
     });
     $(document).on('pagebeforehide', "#postsPage", function(e){
         //Ti.App.fireEvent("iLepraToolbarButtons", {showOrganize: false, showRefresh: false});
     });
     $(document).on('pageshow', "#postsPage", function(event){
-        //Ti.App.fireEvent("iLepraToolbarButtons", {title: "Главная", showOrganize: true, showRefresh: true});
+        //Ti.App.fireEvent("iLepraToolbarButtons", {showOrganize: true, showRefresh: true});
+        window.plugins.nativeUI.setTitle("Главная");
 
         lastPages = ["#postsPage"];
         
@@ -72,7 +73,7 @@ var lastPages = [];
         });
         iLepra.getLastPosts();
 
-        initCounters();
+        //initCounters();
 
         // more posts
         morePostsBtn.bind("tap", function(e){
@@ -105,13 +106,12 @@ var lastPages = [];
             }
         });
         
-        
-        
-        //Ti.App.fireEvent('iLepraInitDone');
+        // try to hide splash if needed
+        window.plugins.nativeUI.hideSplash();
     });
     
     //Ti.App
-    $(document).addEventListener('iLepraMainChange', function(data){
+    $(document).on('iLepraMainChange', function(data){
         switch(data.val){
             case "main":
                 prepareLayoutReadyEvent();
@@ -130,7 +130,7 @@ var lastPages = [];
     
     // refresh
     //Ti.App
-    $(document).addEventListener('iLepraDoRefresh', function(e){
+    $(document).on('iLepraDoRefresh', function(e){
         if( $.mobile.activePage.attr('id') != "postsPage" ) return;
 
         // show loader

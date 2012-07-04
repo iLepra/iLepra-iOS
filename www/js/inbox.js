@@ -19,7 +19,7 @@
 
     // render page on creation
     $(document).on('pageshow', "#inboxPage", function(){
-    	//Ti.App.fireEvent("iLepraToolbarButtons", {title: "Инбокс"});
+        window.plugins.nativeUI.setTitle("Инбокс");
 
         lastPages = ["#inboxPage"];
     	

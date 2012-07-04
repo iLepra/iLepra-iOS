@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		227C4A6215A47D8F00F75F94 /* NativeUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 227C4A6115A47D8F00F75F94 /* NativeUI.m */; };
+		227C4A6915A4A8E700F75F94 /* icon-big.png in Resources */ = {isa = PBXBuildFile; fileRef = 227C4A6815A4A8E700F75F94 /* icon-big.png */; };
 		22933FBD15A1CAAA00CF08FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22933FBC15A1CAAA00CF08FF /* Foundation.framework */; };
 		22933FBF15A1CAAB00CF08FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22933FBE15A1CAAA00CF08FF /* UIKit.framework */; };
 		22933FC115A1CAAB00CF08FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22933FC015A1CAAB00CF08FF /* CoreGraphics.framework */; };
@@ -41,6 +43,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		227C4A6015A47D8F00F75F94 /* NativeUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeUI.h; path = Plugins/NativeUI.h; sourceTree = "<group>"; };
+		227C4A6115A47D8F00F75F94 /* NativeUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NativeUI.m; path = Plugins/NativeUI.m; sourceTree = "<group>"; };
+		227C4A6815A4A8E700F75F94 /* icon-big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-big.png"; sourceTree = "<group>"; };
 		22933FB815A1CAAA00CF08FF /* iLepra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLepra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22933FBC15A1CAAA00CF08FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22933FBE15A1CAAA00CF08FF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -113,6 +118,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		227C4A6715A4A8E700F75F94 /* art */ = {
+			isa = PBXGroup;
+			children = (
+				227C4A6815A4A8E700F75F94 /* icon-big.png */,
+			);
+			name = art;
+			path = Resources/art;
+			sourceTree = "<group>";
+		};
 		22933FAA15A1CAAA00CF08FF = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +194,7 @@
 		22933FE115A1CAAB00CF08FF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				227C4A6715A4A8E700F75F94 /* art */,
 				22933FFE15A1CAAB00CF08FF /* Capture.bundle */,
 				22933FE215A1CAAB00CF08FF /* en.lproj */,
 				22933FE615A1CAAB00CF08FF /* es.lproj */,
@@ -257,6 +272,8 @@
 			isa = PBXGroup;
 			children = (
 				2293400C15A1CAAB00CF08FF /* README */,
+				227C4A6015A47D8F00F75F94 /* NativeUI.h */,
+				227C4A6115A47D8F00F75F94 /* NativeUI.m */,
 			);
 			name = Plugins;
 			sourceTree = "<group>";
@@ -332,6 +349,7 @@
 				2293400115A1CAAB00CF08FF /* Cordova.plist in Resources */,
 				2293400A15A1CAAB00CF08FF /* MainViewController.xib in Resources */,
 				2293401415A1CCDC00CF08FF /* www in Resources */,
+				227C4A6915A4A8E700F75F94 /* icon-big.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +379,7 @@
 				22933FDD15A1CAAB00CF08FF /* main.m in Sources */,
 				2293400515A1CAAB00CF08FF /* AppDelegate.m in Sources */,
 				2293400815A1CAAB00CF08FF /* MainViewController.m in Sources */,
+				227C4A6215A47D8F00F75F94 /* NativeUI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +564,7 @@
 				2293401215A1CAAB00CF08FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

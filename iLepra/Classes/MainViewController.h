@@ -39,8 +39,7 @@
 - (IBAction)menuButtonClick:(id)sender;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *MainView;
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *MenuTable;
-@property (unsafe_unretained, nonatomic) IBOutlet UINavigationItem *MenuTitle;
 @property (unsafe_unretained, nonatomic) IBOutlet UINavigationItem *MainTitle;
-
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *SplashView;
 
 @end
