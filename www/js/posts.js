@@ -47,12 +47,11 @@ var lastPages = [];
     $(document).on("iLepraPostBack", function(){
        $.mobile.changePage(lastPages.pop(), {reverse: true}); 
     });
-    $(document).on('pagebeforehide', "#postsPage", function(e){
+    //$(document).on('pagebeforehide', "#postsPage", function(e){
         //Ti.App.fireEvent("iLepraToolbarButtons", {showOrganize: false, showRefresh: false});
-    });
+    //});
     $(document).on('pageshow', "#postsPage", function(event){
-        //Ti.App.fireEvent("iLepraToolbarButtons", {showOrganize: true, showRefresh: true});
-        window.plugins.nativeUI.setTitle("Главная");
+        window.plugins.nativeUI.setTitle({title: "Главная", organize: true, refresh: true});
 
         lastPages = ["#postsPage"];
         

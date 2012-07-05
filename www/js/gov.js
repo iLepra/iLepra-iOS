@@ -1,7 +1,7 @@
 (function(){
     // render page on creation
     $(document).on('pageshow', "#govPage", function(){
-        window.plugins.nativeUI.setTitle("Белый дом");
+        window.plugins.nativeUI.setTitle({title: "Белый дом", organize: false, refresh: false});
     	
         $.mobile.showPageLoadingMsg()
 

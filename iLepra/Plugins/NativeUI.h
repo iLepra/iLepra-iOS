@@ -21,4 +21,8 @@
 // Set main app title  
 - (void)setTitle:(NSMutableArray*)title withDict:(NSMutableDictionary*)options;
 
+
+// buttons actions
+- (void) refresh: (id) sender;
+
 @end

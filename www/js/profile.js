@@ -20,10 +20,12 @@ var profileName;
 
         $("#profileContent").hide();
     });
-    $(document).on('pagebeforehide', "#profilePage", function(){
+    //$(document).on('pagebeforehide', "#profilePage", function(){
         //Ti.App.fireEvent("iLepraToolbarButtons", {showBack: false});
-    });
+    //});
     $(document).on('pageshow', "#profilePage", function(){
+        window.plugins.nativeUI.setTitle({organize: false, refresh: false});
+
         $.mobile.showPageLoadingMsg();
 
         $(document).bind(iLepra.events.ready, function(event){
@@ -36,7 +38,7 @@ var profileName;
             var data = iLepra.profile.data;
 
             // set username
-            window.plugins.nativeUI.setTitle(data.username);
+            window.plugins.nativeUI.setTitle({title: data.username});
 
             // set userpic
             if( data.userpic != undefined )

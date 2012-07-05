@@ -33,7 +33,7 @@ document.addEventListener("deviceready", function(){
     });
     $(document).on("pageshow", "#loginPage", function(){
         //Ti.App.fireEvent("iLepraToolbarButtons", {showMenu: false});
-        window.plugins.nativeUI.setTitle("iLepra");
+        window.plugins.nativeUI.setTitle({title: "Главная"});
     	
         // load captcha
         $("#captchaImage").attr('src', iLepra.captchaURL);

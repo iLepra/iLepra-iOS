@@ -10,8 +10,17 @@
 	function NativeUI() { }
  
 	// set main app title
-	NativeUI.prototype.setTitle = function(title) {
-		cordovaRef.exec("NativeUI.setTitle", title);
+	NativeUI.prototype.setTitle = function(options) {
+		for(var i in options){
+			if( options[i] === true ){
+				options[i] = 1;
+			}else if( options[i] === false ){
+				options[i] = 0;
+			}
+		}
+		console.log('set options')
+		console.log(options)
+		cordovaRef.exec("NativeUI.setTitle", options);
 	};
 
 	// set main app title

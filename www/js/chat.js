@@ -43,7 +43,7 @@
     });
     $(document).on('pageshow', "#chatPage", function(){
     	//Ti.App.fireEvent("iLepraChatBar", {show: true});
-        window.plugins.nativeUI.setTitle("Лепрочятик");
+        window.plugins.nativeUI.setTitle({title: "Лепрочятик", organize: false, refresh: false});
 
         $.mobile.showPageLoadingMsg()
         requestNewChatData(true);
@@ -53,7 +53,7 @@
     });
 
     //Ti.App
-    $(document).addEventListener("iLepraSubmitChat", function(data){
+    $(document).on("iLepraSubmitChat", function(data){
         var text = data.val;
 
         // clear interval to evade overlap

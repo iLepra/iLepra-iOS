@@ -12,9 +12,9 @@
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
-			<string>IBUIBarButtonItem</string>
 			<string>IBUIImageView</string>
 			<string>IBUILabel</string>
+			<string>IBUIBarButtonItem</string>
 			<string>IBUIActivityIndicatorView</string>
 			<string>IBUINavigationBar</string>
 			<string>IBUINavigationItem</string>
@@ -114,7 +114,7 @@
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIBarStyle">1</int>
-								<array key="IBUIItems">
+								<array class="NSMutableArray" key="IBUIItems">
 									<object class="IBUINavigationItem" id="864957136">
 										<reference key="IBUINavigationBar" ref="827018348"/>
 										<string key="IBUITitle">Title</string>
@@ -183,7 +183,6 @@
 								<string key="NSFrame">{{122, 324}, {122, 21}}</string>
 								<reference key="NSSuperview" ref="85444638"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -248,14 +247,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">MenuButton</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="741834795"/>
-					</object>
-					<int key="connectionID">9</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">MainView</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="648877653"/>
@@ -280,6 +271,22 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">SplashView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="85444638"/>
+					</object>
+					<int key="connectionID">30</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">MenuButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="741834795"/>
+					</object>
+					<int key="connectionID">9</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">MainTitle</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="864957136"/>
@@ -288,11 +295,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">SplashView</string>
+						<string key="label">MainToolbar</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="85444638"/>
+						<reference key="destination" ref="827018348"/>
 					</object>
-					<int key="connectionID">30</int>
+					<int key="connectionID">39</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -365,19 +372,6 @@
 						<reference key="parent" ref="648877653"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">5</int>
-						<reference key="object" ref="864957136"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="741834795"/>
-						</array>
-						<reference key="parent" ref="827018348"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">8</int>
-						<reference key="object" ref="741834795"/>
-						<reference key="parent" ref="864957136"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">6</int>
 						<reference key="object" ref="347411549"/>
 						<array class="NSMutableArray" key="children">
@@ -429,6 +423,19 @@
 						<reference key="object" ref="187341249"/>
 						<reference key="parent" ref="85444638"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">5</int>
+						<reference key="object" ref="864957136"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="741834795"/>
+						</array>
+						<reference key="parent" ref="827018348"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">8</int>
+						<reference key="object" ref="741834795"/>
+						<reference key="parent" ref="864957136"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -454,7 +461,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">33</int>
+			<int key="maxID">39</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -504,6 +511,7 @@
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="MainTitle">UINavigationItem</string>
+						<string key="MainToolbar">UINavigationBar</string>
 						<string key="MainView">UIView</string>
 						<string key="MenuButton">UIBarButtonItem</string>
 						<string key="MenuTable">UITableView</string>
@@ -514,6 +522,10 @@
 						<object class="IBToOneOutletInfo" key="MainTitle">
 							<string key="name">MainTitle</string>
 							<string key="candidateClassName">UINavigationItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="MainToolbar">
+							<string key="name">MainToolbar</string>
+							<string key="candidateClassName">UINavigationBar</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="MainView">
 							<string key="name">MainView</string>

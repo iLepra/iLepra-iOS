@@ -41,5 +41,6 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *MenuTable;
 @property (unsafe_unretained, nonatomic) IBOutlet UINavigationItem *MainTitle;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *SplashView;
+@property (unsafe_unretained, nonatomic) IBOutlet UINavigationBar *MainToolbar;
 
 @end

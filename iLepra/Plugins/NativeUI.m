@@ -11,7 +11,7 @@
 
 @implementation NativeUI
 
-- (void)hideSplash:(NSMutableArray*)hide withDict:(NSMutableDictionary*)options
+- (void)hideSplash:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
 {
     AppDelegate *myApp = (AppDelegate*)[UIApplication sharedApplication].delegate;
     MainViewController *controller = (MainViewController*)myApp.viewController;
@@ -19,11 +19,58 @@
     [controller.SplashView removeFromSuperview];
 }
 
-- (void)setTitle:(NSMutableArray*)title withDict:(NSMutableDictionary*)options
+- (void)setTitle:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
 {
     AppDelegate *myApp = (AppDelegate*)[UIApplication sharedApplication].delegate;
     MainViewController *controller = (MainViewController*)myApp.viewController;// as MainViewController;
-    controller.MainTitle.title = [title objectAtIndex:0];
+    
+    bool showRefresh = [[options objectForKey:@"refresh"] intValue] == 1;
+    bool showOrganize = [[options objectForKey:@"organize"] intValue]  == 1;
+    bool showBack = [[options objectForKey:@"back"] intValue]  == 1;
+    
+    // set title
+    controller.MainTitle.title = [options objectForKey:@"title"];
+    
+    // set left side item
+    if( showBack ){
+        [controller.MainTitle setLeftBarButtonItem:[[UIBarButtonItem alloc]
+                                                    initWithTitle:@"Назад" style:UIBarButtonItemStyleBordered
+                                                    target:nil action:nil]];
+    }else{
+        [controller.MainTitle setLeftBarButtonItem:controller.MenuButton];
+    }
+    
+    // set right side items
+    NSArray *items;
+    if( showRefresh && showOrganize ){
+        items = [NSArray arrayWithObjects:[[UIBarButtonItem alloc] 
+                                           initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
+                                           target:self 
+                                           action:@selector(refresh:)],
+                 [[UIBarButtonItem alloc]
+                  initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize 
+                  target:self 
+                  action:@selector(refresh:)], nil];
+    }else if( showRefresh ){
+        items = [NSArray arrayWithObject:[[UIBarButtonItem alloc]
+                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
+                                                   target:self 
+                                                   action:@selector(refresh:)]];
+    }else if( showOrganize ){
+        items = [NSArray arrayWithObject:[[UIBarButtonItem alloc]
+                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize 
+                                                   target:self 
+                                                   action:@selector(refresh:)]];
+    }else{
+        items = [NSArray array];
+    }
+    
+    controller.MainTitle.rightBarButtonItems = items;
+}
+
+- (void) refresh: (id) sender
+{
+    
 }
 
 @end

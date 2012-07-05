@@ -2,7 +2,7 @@
     var animateTime = 220;
 
     //Ti.App
-    $(document).addEventListener('iLepraMenuSelect', function onMenuSelect(data){
+    $(document).on('iLepraMenuSelect', function onMenuSelect(data){
         //Ti.App.fireEvent('iLepraToggleMenu');
         
         switch(data.entry){

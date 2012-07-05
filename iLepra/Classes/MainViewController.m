@@ -32,6 +32,7 @@
 @synthesize MenuTable;
 @synthesize MainTitle;
 @synthesize SplashView;
+@synthesize MainToolbar;
 @synthesize MenuView;
 @synthesize MenuButton;
 
@@ -88,6 +89,7 @@
     [self setMenuTable:nil];
     [self setMainTitle:nil];
     [self setSplashView:nil];
+    [self setMainToolbar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

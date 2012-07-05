@@ -19,7 +19,7 @@
 
     // render page on creation
     $(document).on('pageshow', "#inboxPage", function(){
-        window.plugins.nativeUI.setTitle("Инбокс");
+        window.plugins.nativeUI.setTitle({title: "Инбокс", organize: false, refresh: false});
 
         lastPages = ["#inboxPage"];
     	

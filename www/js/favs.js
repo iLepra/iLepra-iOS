@@ -20,7 +20,7 @@
 
     // render page on creation
     $(document).on('pageshow', "#favsPage", function(){
-        window.plugins.nativeUI.setTitle("Избранное");
+        window.plugins.nativeUI.setTitle({title: "Избранное", organize: false, refresh: false});
 
         lastPages = ["#favsPage"];
     	
