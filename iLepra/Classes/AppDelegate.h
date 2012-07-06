@@ -33,10 +33,14 @@
     #import "CDVViewController.h"
 #endif
 
+#import "../Plugins/NativeUI.h"
+
 
 @interface AppDelegate : NSObject < UIApplicationDelegate > {
-
+    CDVPlugin* nativeUI;
 }
+
+@property (nonatomic, retain) CDVPlugin* nativeUI;
 
 // invoke string is passed to your app on launch, this is only valid if you 
 // edit iLepra-Info.plist to add a protocol

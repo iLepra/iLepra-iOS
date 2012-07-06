@@ -12,19 +12,14 @@ var profileName;
 
     // render page on creation
     $(document).on('pagebeforeshow', "#profilePage", function(){
-        if( profileName == iLepra.username ){
-            //Ti.App.fireEvent("iLepraToolbarButtons", {showBack: false, title: profileName});
-        }else{
-            //Ti.App.fireEvent("iLepraToolbarButtons", {showBack: true, title: profileName});
-        }
-
         $("#profileContent").hide();
     });
-    //$(document).on('pagebeforehide', "#profilePage", function(){
-        //Ti.App.fireEvent("iLepraToolbarButtons", {showBack: false});
-    //});
     $(document).on('pageshow', "#profilePage", function(){
-        window.plugins.nativeUI.setTitle({organize: false, refresh: false});
+        if( profileName == iLepra.username ){
+            window.plugins.nativeUI.setTitle({organize: false, refresh: false, menu: true, title: profileName});
+        }else{
+            window.plugins.nativeUI.setTitle({organize: false, refresh: false, back: true, title: profileName});
+        }        
 
         $.mobile.showPageLoadingMsg();
 
@@ -36,9 +31,6 @@ var profileName;
             $("#profileContent").show();
 
             var data = iLepra.profile.data;
-
-            // set username
-            window.plugins.nativeUI.setTitle({title: data.username});
 
             // set userpic
             if( data.userpic != undefined )

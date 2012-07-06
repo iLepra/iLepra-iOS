@@ -31,11 +31,15 @@
     #import "CDVViewController.h"
 #endif
 
-@interface MainViewController : CDVViewController <UITableViewDelegate, UITableViewDataSource> {
+#import "AppDelegate.h"
+
+@interface MainViewController : CDVViewController <UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource> {
     NSMutableArray *menuItems;
+    NSMutableArray *pickerSections;
+                                                       
 }
 @property (strong, nonatomic) IBOutlet UIView *MenuView;
-@property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *MenuButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *MenuButton;
 - (IBAction)menuButtonClick:(id)sender;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *MainView;
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *MenuTable;

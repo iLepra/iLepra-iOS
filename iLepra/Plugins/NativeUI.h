@@ -13,16 +13,16 @@
 #import "../Classes/MainViewController.h"
 
 @interface NativeUI : CDVPlugin {
+    NSMutableDictionary* callbackIds;
 }
 
-// Set main app title  
-- (void)hideSplash:(NSMutableArray*)hide withDict:(NSMutableDictionary*)options;
+@property (nonatomic, retain) NSMutableDictionary* callbackIds;
 
-// Set main app title  
-- (void)setTitle:(NSMutableArray*)title withDict:(NSMutableDictionary*)options;
+- (void)hideSplash:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+- (void)setTitle:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 
+- (void)registerCallback:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 
-// buttons actions
-- (void) refresh: (id) sender;
+- (void)menuSelected:(NSString*)entry;
 
 @end

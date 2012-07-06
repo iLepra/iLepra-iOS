@@ -43,15 +43,8 @@ var lastPages = [];
     })
 
     // render page on creation
-    //Ti.App
-    $(document).on("iLepraPostBack", function(){
-       $.mobile.changePage(lastPages.pop(), {reverse: true}); 
-    });
-    //$(document).on('pagebeforehide', "#postsPage", function(e){
-        //Ti.App.fireEvent("iLepraToolbarButtons", {showOrganize: false, showRefresh: false});
-    //});
     $(document).on('pageshow', "#postsPage", function(event){
-        window.plugins.nativeUI.setTitle({title: "Главная", organize: true, refresh: true});
+        window.plugins.nativeUI.setTitle({title: "Главная", organize: true, refresh: true, menu: true});
 
         lastPages = ["#postsPage"];
         
@@ -110,8 +103,8 @@ var lastPages = [];
     });
     
     //Ti.App
-    $(document).on('iLepraMainChange', function(data){
-        switch(data.val){
+    window.oniLepraMainChange = function(data){
+        switch(data){
             case "main":
                 prepareLayoutReadyEvent();
                 iLepra.switchLayout(1);
@@ -125,11 +118,10 @@ var lastPages = [];
                 iLepra.switchLayout(2);
                 break;
         }
-    });
+    };
     
     // refresh
-    //Ti.App
-    $(document).on('iLepraDoRefresh', function(e){
+    window.oniLepraDoRefreshPosts = function(){
         if( $.mobile.activePage.attr('id') != "postsPage" ) return;
 
         // show loader
@@ -146,7 +138,7 @@ var lastPages = [];
 
         // get posts
         iLepra.getLastPosts(true);
-    });
+    };
 
     // show full post
     $(document).on("tap", "a.postListItem", function(e){

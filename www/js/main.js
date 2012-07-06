@@ -27,13 +27,9 @@ document.addEventListener("deviceready", function(){
             getLatestPosts();
         }
     });
-
-    $(document).on("pagebeforehide", "#loginPage", function(){
-        //Ti.App.fireEvent("iLepraToolbarButtons", {showMenu: true});
-    });
+    
     $(document).on("pageshow", "#loginPage", function(){
-        //Ti.App.fireEvent("iLepraToolbarButtons", {showMenu: false});
-        window.plugins.nativeUI.setTitle({title: "Главная"});
+        window.plugins.nativeUI.setTitle({title: "iLepra", menu: false, back:false, refresh: false, organize: false});
     	
         // load captcha
         $("#captchaImage").attr('src', iLepra.captchaURL);

@@ -9,8 +9,9 @@
  	// 
 	function NativeUI() { }
  
-	// set main app title
+	// set main app title and buttons
 	NativeUI.prototype.setTitle = function(options) {
+		// convert bool to int
 		for(var i in options){
 			if( options[i] === true ){
 				options[i] = 1;
@@ -18,8 +19,6 @@
 				options[i] = 0;
 			}
 		}
-		console.log('set options')
-		console.log(options)
 		cordovaRef.exec("NativeUI.setTitle", options);
 	};
 
@@ -30,6 +29,13 @@
 			cordovaRef.exec("NativeUI.hideSplash");
 		}
 	};
+
+	// register for callback
+	NativeUI.prototype.registerCallback = function(options) {
+		cordovaRef.exec("NativeUI.registerCallback", options);
+	};
+
+	
 
 	// register plugin
 	cordovaRef.addConstructor(function() {

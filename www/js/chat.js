@@ -43,7 +43,7 @@
     });
     $(document).on('pageshow', "#chatPage", function(){
     	//Ti.App.fireEvent("iLepraChatBar", {show: true});
-        window.plugins.nativeUI.setTitle({title: "Лепрочятик", organize: false, refresh: false});
+        window.plugins.nativeUI.setTitle({title: "Лепрочятик", organize: false, refresh: false, menu: true});
 
         $.mobile.showPageLoadingMsg()
         requestNewChatData(true);

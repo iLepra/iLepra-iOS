@@ -22,7 +22,7 @@
 
     // render page on creation
     $(document).on('pageshow', "#subsPage", function(){
-        window.plugins.nativeUI.setTitle({title: "Подлепры", organize: false, refresh: false});
+        window.plugins.nativeUI.setTitle({title: "Подлепры", organize: false, refresh: false, menu: true});
 
         lastPages = ["#subsPage"];
     	
@@ -75,12 +75,8 @@
         try{
             subpostsList.empty();
         }catch(e){};
-        //Ti.App.fireEvent("iLepraToolbarButtons", {showBack: true});
-        window.plugins.nativeUI.setTitle({title: subName, organize: false, refresh: false});
+        window.plugins.nativeUI.setTitle({title: subName, organize: false, refresh: false, back: true});
     });
-    //$(document).on('pagebeforehide', "#subpostsPage", function(){
-        //Ti.App.fireEvent("iLepraToolbarButtons", {showBack: false});
-    //});
     $(document).on('pageshow', "#subpostsPage", function(){
         subpostsList = $("#subpostsList");
         moreSubpostsBtn = $("#moreSubpostsButton");

@@ -75,13 +75,12 @@
     }
 
     // refresh
-    //Ti.App
-    $(document).on('iLepraDoRefresh', function(){
+    window.oniLepraDoRefreshPost = function(){
         if( $.mobile.activePage.attr('id') != "fullPostPage" ) return;
 
         // reload
         reloadComments();
-    });
+    };
 
     $(document).on('pagebeforeshow', "#fullPostPage", function(e, ui){
         $("#postCommentsButtonsGroup").show();
@@ -94,9 +93,6 @@
 
         window.plugins.nativeUI.setTitle({title: "", organize: false, refresh: true, back: true});
     });
-    //$(document).on('pagebeforehide', "#fullPostPage", function(){
-        //Ti.App.fireEvent("iLepraToolbarButtons", {showBack: false, showRefresh: false});
-    //})
 
     // on post comments show
     $(document).on('pagecreate', "#fullPostPage", function(){

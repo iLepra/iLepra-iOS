@@ -15,8 +15,7 @@ window.addEventListener('load', function(){
         if(link.indexOf('http://') != -1){
             e.preventDefault();
             e.stopImmediatePropagation();
-            //window.open(link);
-            Ti.App.fireEvent("iLepraExternalLink", {url: link});
+            window.plugins.childBrowser.showWebPage(link);
         }
     });
 

@@ -39,7 +39,7 @@
 
 @implementation AppDelegate
 
-@synthesize window, viewController;
+@synthesize window, viewController, nativeUI;
 
 - (id) init
 {	

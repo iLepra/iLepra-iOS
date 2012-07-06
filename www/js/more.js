@@ -1,55 +1,52 @@
 (function(){
     var animateTime = 220;
 
-    //Ti.App
-    $(document).on('iLepraMenuSelect', function onMenuSelect(data){
-        //Ti.App.fireEvent('iLepraToggleMenu');
-        
-        switch(data.entry){
-            case "posts":
+    window.oniLepraMenuSelect = function(data){
+        switch(data){
+            case "Посты":
                 setTimeout(function(){
                     $.mobile.changePage("#postsPage");
                 }, animateTime)
                 break;
-            case "mystuff":
+            case "Мои вещи":
                 setTimeout(function(){
                     $.mobile.changePage("#mystuffPage");
                 }, animateTime)
                 break;    
-            case "inbox":
+            case "Инбокс":
                 setTimeout(function(){
                     $.mobile.changePage("#inboxPage");
                 }, animateTime)
                 break;
-            case "favs":
+            case "Избранное":
                 setTimeout(function(){
                     $.mobile.changePage("#favsPage");
                 }, animateTime)
                 break;    
-            case "mysubs":
+            case "Мои подлепры":
                 setTimeout(function(){
                     iLepra.sub.list = iLepra.userSubLepras;
                     iLepra.sub.fetch = false;
                     $.mobile.changePage("#subsPage", {allowSamePageTransition: true});
                 }, animateTime)
                 break;
-            case "subs":
+            case "Блоги империи":
                 setTimeout(function(){
                     iLepra.sub.fetch = true;
                     $.mobile.changePage("#subsPage", {allowSamePageTransition: true});
                 }, animateTime)
                 break;
-            case "gov":
+            case "Белый дом":
                 setTimeout(function(){
                     $.mobile.changePage("#govPage");
                 }, animateTime)
                 break;            
-            case "chat":
+            case "Чятик":
                 setTimeout(function(){
                     $.mobile.changePage("#chatPage");
                 }, animateTime)
                 break;
-            case "exit":
+            case "Выход":
                 setTimeout(function(){
                     $.mobile.showPageLoadingMsg();
                     $(document).bind(iLepra.events.ready, function(event){
@@ -67,12 +64,12 @@
                 break;    
             
             
-            case "profile":
+            case "Профиль":
                 profileName = iLepra.username;
                 setTimeout(function(){
                     $.mobile.changePage("#profilePage");
                 }, animateTime)
                 break;
         }
-    });
+    };
 })();

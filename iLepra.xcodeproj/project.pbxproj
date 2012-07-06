@@ -40,6 +40,10 @@
 		2293400815A1CAAB00CF08FF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2293400715A1CAAB00CF08FF /* MainViewController.m */; };
 		2293400A15A1CAAB00CF08FF /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2293400915A1CAAB00CF08FF /* MainViewController.xib */; };
 		2293401415A1CCDC00CF08FF /* www in Resources */ = {isa = PBXBuildFile; fileRef = 2293401315A1CCDC00CF08FF /* www */; };
+		22EAE93315A7197D0094E1A5 /* ChildBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22EAE93215A7197D0094E1A5 /* ChildBrowserViewController.xib */; };
+		22EAE93715A719890094E1A5 /* ChildBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EAE93615A719890094E1A5 /* ChildBrowserViewController.m */; };
+		22EAE93A15A719900094E1A5 /* ChildBrowserCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EAE93915A719900094E1A5 /* ChildBrowserCommand.m */; };
+		22EAE93C15A7199D0094E1A5 /* ChildBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 22EAE93B15A7199D0094E1A5 /* ChildBrowser.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +88,12 @@
 		2293400C15A1CAAB00CF08FF /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
 		2293400D15A1CAAB00CF08FF /* verify.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = verify.sh; sourceTree = "<group>"; };
 		2293401315A1CCDC00CF08FF /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
+		22EAE93215A7197D0094E1A5 /* ChildBrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildBrowserViewController.xib; sourceTree = "<group>"; };
+		22EAE93515A719890094E1A5 /* ChildBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildBrowserViewController.h; sourceTree = "<group>"; };
+		22EAE93615A719890094E1A5 /* ChildBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildBrowserViewController.m; sourceTree = "<group>"; };
+		22EAE93815A719900094E1A5 /* ChildBrowserCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildBrowserCommand.h; sourceTree = "<group>"; };
+		22EAE93915A719900094E1A5 /* ChildBrowserCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildBrowserCommand.m; sourceTree = "<group>"; };
+		22EAE93B15A7199D0094E1A5 /* ChildBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ChildBrowser.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +195,7 @@
 				22933FDC15A1CAAB00CF08FF /* main.m */,
 				22933FDE15A1CAAB00CF08FF /* iLepra-Prefix.pch */,
 				2293400015A1CAAB00CF08FF /* Cordova.plist */,
+				22EAE93215A7197D0094E1A5 /* ChildBrowserViewController.xib */,
 				2293400915A1CAAB00CF08FF /* MainViewController.xib */,
 				2293400D15A1CAAB00CF08FF /* verify.sh */,
 			);
@@ -194,6 +205,7 @@
 		22933FE115A1CAAB00CF08FF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				22EAE93B15A7199D0094E1A5 /* ChildBrowser.bundle */,
 				227C4A6715A4A8E700F75F94 /* art */,
 				22933FFE15A1CAAB00CF08FF /* Capture.bundle */,
 				22933FE215A1CAAB00CF08FF /* en.lproj */,
@@ -262,6 +274,8 @@
 			children = (
 				2293400315A1CAAB00CF08FF /* AppDelegate.h */,
 				2293400415A1CAAB00CF08FF /* AppDelegate.m */,
+				22EAE93515A719890094E1A5 /* ChildBrowserViewController.h */,
+				22EAE93615A719890094E1A5 /* ChildBrowserViewController.m */,
 				2293400615A1CAAB00CF08FF /* MainViewController.h */,
 				2293400715A1CAAB00CF08FF /* MainViewController.m */,
 			);
@@ -272,6 +286,8 @@
 			isa = PBXGroup;
 			children = (
 				2293400C15A1CAAB00CF08FF /* README */,
+				22EAE93815A719900094E1A5 /* ChildBrowserCommand.h */,
+				22EAE93915A719900094E1A5 /* ChildBrowserCommand.m */,
 				227C4A6015A47D8F00F75F94 /* NativeUI.h */,
 				227C4A6115A47D8F00F75F94 /* NativeUI.m */,
 			);
@@ -350,6 +366,8 @@
 				2293400A15A1CAAB00CF08FF /* MainViewController.xib in Resources */,
 				2293401415A1CCDC00CF08FF /* www in Resources */,
 				227C4A6915A4A8E700F75F94 /* icon-big.png in Resources */,
+				22EAE93315A7197D0094E1A5 /* ChildBrowserViewController.xib in Resources */,
+				22EAE93C15A7199D0094E1A5 /* ChildBrowser.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +398,8 @@
 				2293400515A1CAAB00CF08FF /* AppDelegate.m in Sources */,
 				2293400815A1CAAB00CF08FF /* MainViewController.m in Sources */,
 				227C4A6215A47D8F00F75F94 /* NativeUI.m in Sources */,
+				22EAE93715A719890094E1A5 /* ChildBrowserViewController.m in Sources */,
+				22EAE93A15A719900094E1A5 /* ChildBrowserCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

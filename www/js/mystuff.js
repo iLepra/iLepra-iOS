@@ -19,7 +19,7 @@
 
     // render page on creation
     $(document).on('pageshow', "#mystuffPage", function(){
-        window.plugins.nativeUI.setTitle({title: "Мои вещи", organize: false, refresh: false});
+        window.plugins.nativeUI.setTitle({title: "Мои вещи", organize: false, refresh: false, menu: true});
 
         lastPages = ["#mystuffPage"];
     	

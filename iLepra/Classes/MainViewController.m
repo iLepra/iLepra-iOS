@@ -41,6 +41,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        //SectionPicker.hidden = true;
     }
     return self;
 }
@@ -59,6 +60,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    // init menu tableview
     menuItems = [[NSMutableArray alloc] init];
     
     NSArray *mainSectionArray = [NSArray arrayWithObjects:@"Посты", @"Мои вещи", @"Инбокс", nil];
@@ -79,6 +82,12 @@
     [menuItems addObject:miscDict];
     
     [MenuTable setSeparatorColor:[UIColor darkGrayColor]];
+    
+    // init section picker
+    pickerSections = [[NSMutableArray alloc] init];
+    [pickerSections addObject:@"Главная"];
+    [pickerSections addObject:@"Все подряд"];
+    [pickerSections addObject:@"Подлепры"];
 }
 
 - (void) viewDidUnload
@@ -180,6 +189,10 @@
 }
 */
 
+/*
+ * TABLE STUFF
+ */
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [menuItems count];
 }
@@ -241,7 +254,31 @@
     return headerView;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString* row = (NSString *)[[[[menuItems objectAtIndex:indexPath.section] allValues] objectAtIndex:0] objectAtIndex:indexPath.row];
+    
+    [self toggleMenu];
+    
+    AppDelegate *myApp = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    NativeUI* nUI = (NativeUI*)myApp.nativeUI;
+    [nUI menuSelected:row];
+}
+
+/*
+ * PICKER STUFF
+ */
+
+
+/*
+ * OTHER STUFF
+ */
+
 - (IBAction)menuButtonClick:(id)sender {
+    [self toggleMenu];
+}
+
+- (void)toggleMenu 
+{
     CGPoint center = MainView.center;
     if( center.x == 160 ){
         center.x = 160 + 255;
