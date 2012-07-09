@@ -57,7 +57,7 @@
     MainViewController *controller = (MainViewController*)myApp.viewController;// as MainViewController;
     
     bool showRefresh = [[options objectForKey:@"refresh"] intValue] == 1;
-    bool showOrganize = [[options objectForKey:@"organize"] intValue]  == 1;
+    bool showOrganize = false;// [[options objectForKey:@"organize"] intValue]  == 1;
     bool showBack = [[options objectForKey:@"back"] intValue]  == 1;
     bool showMenu = [[options objectForKey:@"menu"] intValue]  == 1;
     
