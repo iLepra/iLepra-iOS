@@ -26,22 +26,21 @@
     NSString* systemVersion = [[UIDevice currentDevice] systemVersion];
     BOOL isLessThaniOS4 = ([systemVersion compare:@"4.0" options:NSNumericSearch] == NSOrderedAscending);
 
-    // the iPad image (nor retina) differentiation code was not in 3.x, and we have to explicitly set the path
     if (isLessThaniOS4) {
+
         return [NSString stringWithFormat:@"%@.png", resource];
-    }else{
-        if ([[UIScreen mainScreen] scale] == 2.00) {
-            if( [[UIScreen mainScreen] respondsToSelector:@selector(scale)] == YES ) {
-                return [NSString stringWithFormat:@"%@-72@2x.png", resource];
-            } else {
-                return [NSString stringWithFormat:@"%@@2x.png", resource];
-            }
-        } else {
-            return [NSString stringWithFormat:@"%@.png", resource];
-        }
+
+    } else {
+
+        if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] == YES && [[UIScreen mainScreen] scale] == 2.00) {
+
+	    return [NSString stringWithFormat:@"%@@2x.png", resource];
+
+	}
+
     }
 
-    return resource;
+    return resource;//if all else fails
 }
 
 
@@ -79,7 +78,6 @@
     // e.g. self.myOutlet = nil;
     NSLog(@"View did UN-load");
 }
-
 
 -(void)closeBrowser
 {
@@ -153,7 +151,6 @@
         [url hasSuffix:@".bmp" ]  || 
         [url hasSuffix:@".gif" ]  )
     {
-        //[ imageURL release ];
         imageURL = [url copy];
         isImage = YES;
         NSString* htmlText = @"<html><body style='background-color:#333;margin:0px;padding:0px;'><img style='min-height:200px;margin:0px;padding:0px;width:100%;height:auto;' alt='' src='IMGSRC'/></body></html>";

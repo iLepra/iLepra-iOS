@@ -102,7 +102,7 @@
 					</object>
 					<object class="IBUIView" id="648877653">
 						<reference key="NSNextResponder" ref="986275799"/>
-						<int key="NSvFlags">301</int>
+						<int key="NSvFlags">274</int>
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUINavigationBar" id="827018348">
 								<reference key="NSNextResponder" ref="648877653"/>
@@ -150,7 +150,7 @@
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIActivityIndicatorView" id="1067762422">
 								<reference key="NSNextResponder" ref="85444638"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">301</int>
 								<string key="NSFrame">{{77, 316}, {37, 37}}</string>
 								<reference key="NSSuperview" ref="85444638"/>
 								<reference key="NSWindow"/>
@@ -164,12 +164,13 @@
 							</object>
 							<object class="IBUIImageView" id="92000232">
 								<reference key="NSNextResponder" ref="85444638"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">319</int>
 								<string key="NSFrame">{{80, 140}, {160, 160}}</string>
 								<reference key="NSSuperview" ref="85444638"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1067762422"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<int key="IBUIContentMode">1</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -179,14 +180,14 @@
 							</object>
 							<object class="IBUILabel" id="187341249">
 								<reference key="NSNextResponder" ref="85444638"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">319</int>
 								<string key="NSFrame">{{122, 324}, {122, 21}}</string>
 								<reference key="NSSuperview" ref="85444638"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">7</int>
+								<int key="IBUIContentMode">1</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">Загружаемся...</string>
@@ -202,11 +203,11 @@
 								<float key="IBUIMinimumFontSize">10</float>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<int key="type">1</int>
-									<double key="pointSize">17</double>
+									<double key="pointSize">25</double>
 								</object>
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Helvetica</string>
-									<double key="NSSize">17</double>
+									<double key="NSSize">25</double>
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
