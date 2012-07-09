@@ -146,7 +146,7 @@
 					</object>
 					<object class="IBUIView" id="85444638">
 						<reference key="NSNextResponder" ref="986275799"/>
-						<int key="NSvFlags">-2147483374</int>
+						<int key="NSvFlags">274</int>
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIActivityIndicatorView" id="1067762422">
 								<reference key="NSNextResponder" ref="85444638"/>
@@ -516,7 +516,6 @@
 						<string key="MenuButton">UIBarButtonItem</string>
 						<string key="MenuTable">UITableView</string>
 						<string key="MenuView">UIView</string>
-						<string key="SectionPicker">UIPickerView</string>
 						<string key="SplashView">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -543,10 +542,6 @@
 						<object class="IBToOneOutletInfo" key="MenuView">
 							<string key="name">MenuView</string>
 							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="SectionPicker">
-							<string key="name">SectionPicker</string>
-							<string key="candidateClassName">UIPickerView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="SplashView">
 							<string key="name">SplashView</string>

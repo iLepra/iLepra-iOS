@@ -63,14 +63,15 @@
 	
 	<!-- MAIN POSTS PAGE -->
 	<div data-role="page" id="postsPage">
+		<div data-role="header" style="text-align: center; padding-top: 4px;">
+			<div data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<a data-role="button" id="postsMain">Главная</a>
+				<a data-role="button" id="postsAll">Все</a>
+				<a data-role="button" id="postsSub">Подлепры</a>
+			</div>
+		</div>
+
 	    <div data-role="content">
-	        <div style="position: absolute; display: none;">
-	            <select id="layoutSelect" data-mini="true" data-inline="true">
-	                <option value="main">Главная</option>
-	                <option value="all">Все</option>
-	                <option value="sub">Подлепры</option>
-	            </select>
-	        </div>
 	        <ul data-role="listview" id="postsList">
 	        </ul>
 	        <br/>

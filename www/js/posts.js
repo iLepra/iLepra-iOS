@@ -43,29 +43,9 @@ var lastPages = [];
     })
 
     // render page on creation
-    $(document).on('pageshow', "#postsPage", function(event){
-        window.plugins.nativeUI.setTitle({title: "Главная", organize: true, refresh: true, menu: true});
-
-        lastPages = ["#postsPage"];
-        
+    $(document).on('pagecreate', "#postsPage", function(event){
         postsList = $("#postsList");
         morePostsBtn = $("#morePostsButton");
-
-        $.mobile.showPageLoadingMsg();
-
-        $(document).bind(iLepra.events.ready, function(event){
-            $(document).unbind(event);
-
-            // hide loading msg
-            $.mobile.hidePageLoadingMsg()
-
-            morePostsBtn.show();
-
-            renderNewPosts();
-        });
-        iLepra.getLastPosts();
-
-        //initCounters();
 
         // more posts
         morePostsBtn.bind("tap", function(e){
@@ -97,28 +77,44 @@ var lastPages = [];
                 iLepra.getMorePosts();
             }
         });
+
+        $("#postsMain").bind("tap", function(){
+            prepareLayoutReadyEvent();
+            iLepra.switchLayout(1);
+        });
+        $("#postsAll").bind("tap", function(){
+            prepareLayoutReadyEvent();
+            iLepra.switchLayout(0);
+        });
+        $("#postsSub").bind("tap", function(){
+            prepareLayoutReadyEvent();
+            iLepra.switchLayout(2);
+        });
+    });
+    $(document).on('pageshow', "#postsPage", function(event){
+        window.plugins.nativeUI.setTitle({title: "Главная", organize: true, refresh: true, menu: true});
+
+        lastPages = ["#postsPage"];
+
+        $.mobile.showPageLoadingMsg();
+
+        $(document).bind(iLepra.events.ready, function(event){
+            $(document).unbind(event);
+
+            // hide loading msg
+            $.mobile.hidePageLoadingMsg()
+
+            morePostsBtn.show();
+
+            renderNewPosts();
+        });
+        iLepra.getLastPosts();
+
+        //initCounters();
         
         // try to hide splash if needed
         window.plugins.nativeUI.hideSplash();
     });
-    
-    //Ti.App
-    window.oniLepraMainChange = function(data){
-        switch(data){
-            case "main":
-                prepareLayoutReadyEvent();
-                iLepra.switchLayout(1);
-                break;
-            case "all":
-                prepareLayoutReadyEvent();
-                iLepra.switchLayout(0);
-                break;
-            case "sub":
-                prepareLayoutReadyEvent();
-                iLepra.switchLayout(2);
-                break;
-        }
-    };
     
     // refresh
     window.oniLepraDoRefreshPosts = function(){
