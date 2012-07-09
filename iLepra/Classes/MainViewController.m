@@ -36,6 +36,8 @@
 @synthesize MenuView;
 @synthesize MenuButton;
 
+CGPoint defaultCenter;
+
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -82,12 +84,15 @@
     [menuItems addObject:miscDict];
     
     [MenuTable setSeparatorColor:[UIColor darkGrayColor]];
+    MenuTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     // init section picker
     pickerSections = [[NSMutableArray alloc] init];
     [pickerSections addObject:@"Главная"];
     [pickerSections addObject:@"Все подряд"];
     [pickerSections addObject:@"Подлепры"];
+    
+    defaultCenter = MainView.center;
 }
 
 - (void) viewDidUnload
@@ -280,11 +285,11 @@
 - (void)toggleMenu 
 {
     CGPoint center = MainView.center;
-    if( center.x == 160 ){
-        center.x = 160 + 255;
+    if( center.x == defaultCenter.x ){
+        center.x = defaultCenter.x + 255;
         self.webView.userInteractionEnabled = false;
     }else{
-        center.x = 160;
+        center.x = defaultCenter.x;
         self.webView.userInteractionEnabled = true;
     }
     
