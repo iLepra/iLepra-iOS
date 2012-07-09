@@ -119,6 +119,17 @@
 	
 	<!-- CHAT PAGE -->
 	<div data-role="page" id="chatPage">
+		<div data-role="header" style="padding-top: 4px; padding-bottom: 4px;">
+	        <div class="ui-grid-a">
+	            <div class="ui-block-a" style="width:79%">
+	                <input type="text" id="chatInput" value="" placeholder="Написать в чятик" data-mini='true'  />
+	            </div>
+	            <div class="ui-block-b" style="width:19%">
+	                <a href="#" id="submitChat" data-role="button" data-mini='true' class="maxedFootButton">OK</a>
+	            </div>
+	        </div><!-- /grid-a -->
+	    </div>
+
 	    <div data-role="content">
 	        <ul data-role="listview" id="chatList" data-divider-theme="a">
 	        </ul>
