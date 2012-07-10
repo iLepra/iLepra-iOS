@@ -97,7 +97,14 @@ var lastPages = [];
 
         lastPages = ["#postsPage"];
 
-        showLoader = true;
+        initCounters();
+        
+        // try to hide splash if needed
+        window.plugins.nativeUI.hideSplash();
+    });
+    $(document).on('pageshow', "#postsPage", function(event){
+        $.mobile.showPageLoadingMsg();
+
         $(document).bind(iLepra.events.ready, function(event){
             $(document).unbind(event);
 
@@ -110,14 +117,6 @@ var lastPages = [];
             renderNewPosts();
         });
         iLepra.getLastPosts();
-
-        initCounters();
-        
-        // try to hide splash if needed
-        window.plugins.nativeUI.hideSplash();
-    });
-    $(document).on('pageshow', "#postsPage", function(event){
-        if( showLoader ) $.mobile.showPageLoadingMsg();
     });
     
     // refresh

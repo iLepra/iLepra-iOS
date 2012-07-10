@@ -19,6 +19,9 @@ var profileName;
         }        
 
         $("#profileContent").hide();
+    });
+    $(document).on('pageshow', "#profilePage", function(){
+        $.mobile.showPageLoadingMsg();
 
         $(document).bind(iLepra.events.ready, function(event){
             $(document).unbind(event);
@@ -65,8 +68,5 @@ var profileName;
         });
 
         iLepra.profile.getProfile(profileName);
-    });
-    $(document).on('pageshow', "#profilePage", function(){
-        $.mobile.showPageLoadingMsg();
     });
 })();

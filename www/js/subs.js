@@ -30,8 +30,11 @@
         lastPages = ["#subsPage"];
     	
         subsList.empty();
-
+    });
+    $(document).on('pageshow', "#subsPage", function(){
         if( iLepra.sub.fetch ){
+            $.mobile.showPageLoadingMsg();
+
             $(document).bind(iLepra.events.ready, function(event){
                 $(document).unbind(event);
 
@@ -43,11 +46,6 @@
             iLepra.sub.getList();
         }else{
             rendreNew();
-        }
-    });
-    $(document).on('pageshow', "#subsPage", function(){
-        if( iLepra.sub.fetch ){
-            $.mobile.showPageLoadingMsg();
         }
     });
 

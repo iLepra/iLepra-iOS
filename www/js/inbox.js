@@ -27,6 +27,11 @@
     $(document).on('pagebeforeshow', "#inboxPage", function(){
         window.plugins.nativeUI.setTitle({title: "Инбокс", organize: false, refresh: false, menu: true});
 
+        updateNewsCounts();
+    });
+    $(document).on('pagebeforeshow', "#inboxPage", function(){
+        $.mobile.showPageLoadingMsg();
+
         $(document).bind(iLepra.events.ready, function(event){
             $(document).unbind(event);
 
@@ -55,10 +60,5 @@
             }
         });
         iLepra.getInbox();
-
-        updateNewsCounts();
-    });
-    $(document).on('pagebeforeshow', "#inboxPage", function(){
-        $.mobile.showPageLoadingMsg();
     });
 })();

@@ -27,6 +27,11 @@
     $(document).on('pagebeforeshow', "#mystuffPage", function(){
         window.plugins.nativeUI.setTitle({title: "Мои вещи", organize: false, refresh: false, menu: true});
 
+        updateNewsCounts();
+    });
+    $(document).on('pageshow', "#mystuffPage", function(){
+        $.mobile.showPageLoadingMsg();
+
         $(document).bind(iLepra.events.ready, function(event){
             $(document).unbind(event);
 
@@ -55,10 +60,5 @@
             }
         });
         iLepra.getMyStuff();
-
-        updateNewsCounts();
-    });
-    $(document).on('pageshow', "#mystuffPage", function(){
-        $.mobile.showPageLoadingMsg();
     });
 })();
