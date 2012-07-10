@@ -66,14 +66,16 @@
     $(document).on('pagebeforehide', "#chatPage", function(){
         clearInterval( refreshInterval );
     });
-    $(document).on('pageshow', "#chatPage", function(){
+    $(document).on('pagebeforeshow', "#chatPage", function(){
         window.plugins.nativeUI.setTitle({title: "Лепрочятик", organize: false, refresh: false, menu: true});
 
-        $.mobile.showPageLoadingMsg()
         requestNewChatData(true);
 
         // set refresh interval
         refreshInterval = window.setInterval(requestNewChatData, 10000 );
+    });
+    $(document).on('pageshow', "#chatPage", function(){
+        $.mobile.showPageLoadingMsg()
     });
 
     $(document).on("tap", "li.chatMessage", function(e){

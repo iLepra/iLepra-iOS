@@ -19,15 +19,14 @@
     }
 
     // render page on creation
-    $(document).on('pageshow', "#favsPage", function(){
-        window.plugins.nativeUI.setTitle({title: "Избранное", organize: false, refresh: false, menu: true});
-
+    $(document).on('pagecreate', "#favsPage", function(){
         lastPages = ["#favsPage"];
-    	
+        
         favsList = $("#favsList");
         moreFavsBtn = $("#moreFavsButton");
-
-        $.mobile.showPageLoadingMsg();
+    });
+    $(document).on('pagebeforeshow', "#favsPage", function(){
+        window.plugins.nativeUI.setTitle({title: "Избранное", organize: false, refresh: false, menu: true});
 
         $(document).bind(iLepra.events.ready, function(event){
             $(document).unbind(event);
@@ -57,5 +56,8 @@
             }
         });
         iLepra.getFavourites();
+    });
+    $(document).on('pageshow', "#favsPage", function(){
+        $.mobile.showPageLoadingMsg();
     });
 })();

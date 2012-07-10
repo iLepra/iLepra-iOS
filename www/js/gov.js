@@ -1,9 +1,7 @@
 (function(){
     // render page on creation
-    $(document).on('pageshow', "#govPage", function(){
+    $(document).on('pagebeforeshow', "#govPage", function(){
         window.plugins.nativeUI.setTitle({title: "Белый дом", organize: false, refresh: false, menu: true});
-    	
-        $.mobile.showPageLoadingMsg()
 
         $(document).bind(iLepra.events.ready, function(event){
             $(document).unbind(event);
@@ -17,5 +15,8 @@
             );
         });
         iLepra.gov.getCurrent();
+    });
+    $(document).on('pagebeforeshow', "#govPage", function(){
+        $.mobile.showPageLoadingMsg();
     });
 })();

@@ -24,19 +24,15 @@ window.addEventListener('load', function(){
     var oldShow = $.mobile.showPageLoadingMsg;
     var oldHide = $.mobile.hidePageLoadingMsg;
     $.mobile.showPageLoadingMsg = function(){
-        console.log("disable interactions");
         window.plugins.nativeUI.disableInteractions();
         interactionDisabled = true;
-        console.log("disable interactions done");
         oldShow();
     };
     $.mobile.hidePageLoadingMsg = function(){
-        console.log("enable interactions");
         if( interactionDisabled ){
             window.plugins.nativeUI.enableInteractions();
             interactionDisabled = false;
         }
-        console.log("enable interactions done");
         oldHide();
     }
 });

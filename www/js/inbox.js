@@ -18,15 +18,14 @@
     }
 
     // render page on creation
-    $(document).on('pageshow', "#inboxPage", function(){
-        window.plugins.nativeUI.setTitle({title: "Инбокс", organize: false, refresh: false, menu: true});
-
+    $(document).on('pagecreate', "#inboxPage", function(){
         lastPages = ["#inboxPage"];
-    	
+        
         inboxList = $("#inboxList");
         moreInboxBtn = $("#moreInboxButton");
-
-        $.mobile.showPageLoadingMsg();
+    });
+    $(document).on('pagebeforeshow', "#inboxPage", function(){
+        window.plugins.nativeUI.setTitle({title: "Инбокс", organize: false, refresh: false, menu: true});
 
         $(document).bind(iLepra.events.ready, function(event){
             $(document).unbind(event);
@@ -58,5 +57,8 @@
         iLepra.getInbox();
 
         updateNewsCounts();
+    });
+    $(document).on('pagebeforeshow', "#inboxPage", function(){
+        $.mobile.showPageLoadingMsg();
     });
 })();

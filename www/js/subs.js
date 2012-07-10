@@ -21,17 +21,17 @@
     }
 
     // render page on creation
-    $(document).on('pageshow', "#subsPage", function(){
+    $(document).on('pagecreate', "#subsPage", function(){
+        subsList = $("#subsList");
+    });
+    $(document).on('pagebeforeshow', "#subsPage", function(){
         window.plugins.nativeUI.setTitle({title: "Подлепры", organize: false, refresh: false, menu: true});
 
         lastPages = ["#subsPage"];
     	
-        subsList = $("#subsList");
         subsList.empty();
 
         if( iLepra.sub.fetch ){
-            $.mobile.showPageLoadingMsg();
-
             $(document).bind(iLepra.events.ready, function(event){
                 $(document).unbind(event);
 
@@ -43,6 +43,11 @@
             iLepra.sub.getList();
         }else{
             rendreNew();
+        }
+    });
+    $(document).on('pageshow', "#subsPage", function(){
+        if( iLepra.sub.fetch ){
+            $.mobile.showPageLoadingMsg();
         }
     });
 
@@ -71,32 +76,9 @@
         }catch(e){}
     }
 
-    $(document).on('pagebeforeshow', "#subpostsPage", function(){
-        try{
-            subpostsList.empty();
-        }catch(e){};
-        window.plugins.nativeUI.setTitle({title: subName, organize: false, refresh: false, back: true});
-    });
-    $(document).on('pageshow', "#subpostsPage", function(){
+    $(document).on('pagecreate', "#subpostsPage", function(){
         subpostsList = $("#subpostsList");
         moreSubpostsBtn = $("#moreSubpostsButton");
-
-        $.mobile.showPageLoadingMsg();
-
-        // on posts data
-        $(document).bind(iLepra.events.ready, function(event){
-            $(document).unbind(event);
-
-            // hide loading msg
-            $.mobile.hidePageLoadingMsg();
-
-            moreSubpostsBtn.show();
-
-            renderNewPosts();
-        });
-
-        // get posts
-        iLepra.sub.getPosts(subUrl);
 
         // more btn
         moreSubpostsBtn.bind("tap", function(e){
@@ -128,5 +110,29 @@
                 iLepra.sub.getMorePosts(subUrl);
             }
         });
+    });
+    $(document).on('pagebeforeshow', "#subpostsPage", function(){
+        try{
+            subpostsList.empty();
+        }catch(e){};
+        window.plugins.nativeUI.setTitle({title: subName, organize: false, refresh: false, back: true});
+
+        // on posts data
+        $(document).bind(iLepra.events.ready, function(event){
+            $(document).unbind(event);
+
+            // hide loading msg
+            $.mobile.hidePageLoadingMsg();
+
+            moreSubpostsBtn.show();
+
+            renderNewPosts();
+        });
+
+        // get posts
+        iLepra.sub.getPosts(subUrl);
+    });
+    $(document).on('pageshow', "#subpostsPage", function(){
+        $.mobile.showPageLoadingMsg();
     });
 })();

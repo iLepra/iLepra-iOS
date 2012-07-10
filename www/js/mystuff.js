@@ -18,15 +18,14 @@
     }
 
     // render page on creation
-    $(document).on('pageshow', "#mystuffPage", function(){
-        window.plugins.nativeUI.setTitle({title: "Мои вещи", organize: false, refresh: false, menu: true});
-
+    $(document).on('pagecreate', "#mystuffPage", function(){
         lastPages = ["#mystuffPage"];
-    	
+        
         mystuffList = $("#mystuffList");
         mystuffMoreBtn = $("#moreMystuffButton");
-
-        $.mobile.showPageLoadingMsg();
+    });
+    $(document).on('pagebeforeshow', "#mystuffPage", function(){
+        window.plugins.nativeUI.setTitle({title: "Мои вещи", organize: false, refresh: false, menu: true});
 
         $(document).bind(iLepra.events.ready, function(event){
             $(document).unbind(event);
@@ -58,5 +57,8 @@
         iLepra.getMyStuff();
 
         updateNewsCounts();
+    });
+    $(document).on('pageshow', "#mystuffPage", function(){
+        $.mobile.showPageLoadingMsg();
     });
 })();
