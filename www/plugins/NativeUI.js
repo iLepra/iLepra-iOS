@@ -35,6 +35,13 @@
 		cordovaRef.exec("NativeUI.registerCallback", options);
 	};
 
+	// enable/disable interactions
+	NativeUI.prototype.disableInteractions = function() {
+		cordovaRef.exec("NativeUI.disableInteractions");
+	};
+	NativeUI.prototype.enableInteractions = function() {
+		cordovaRef.exec("NativeUI.enableInteractions");
+	};
 	
 
 	// register plugin

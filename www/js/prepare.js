@@ -20,14 +20,23 @@ window.addEventListener('load', function(){
     });
 
     // override show/hide loading msg to block menu
+    var interactionDisabled = false;
     var oldShow = $.mobile.showPageLoadingMsg;
     var oldHide = $.mobile.hidePageLoadingMsg;
     $.mobile.showPageLoadingMsg = function(){
-        //Ti.App.fireEvent("iLepraAllowMenu", {allow: false});
+        console.log("disable interactions");
+        window.plugins.nativeUI.disableInteractions();
+        interactionDisabled = true;
+        console.log("disable interactions done");
         oldShow();
     };
     $.mobile.hidePageLoadingMsg = function(){
-        //Ti.App.fireEvent("iLepraAllowMenu", {allow: true});
+        console.log("enable interactions");
+        if( interactionDisabled ){
+            window.plugins.nativeUI.enableInteractions();
+            interactionDisabled = false;
+        }
+        console.log("enable interactions done");
         oldHide();
     }
 });

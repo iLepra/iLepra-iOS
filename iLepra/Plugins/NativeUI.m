@@ -103,6 +103,20 @@
     controller.MainTitle.rightBarButtonItems = items;
 }
 
+- (void)disableInteractions:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
+{
+    AppDelegate *myApp = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    MainViewController *controller = (MainViewController*)myApp.viewController;
+    controller.MainView.userInteractionEnabled = false;
+}
+
+- (void)enableInteractions:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
+{
+    AppDelegate *myApp = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    MainViewController *controller = (MainViewController*)myApp.viewController;
+    controller.MainView.userInteractionEnabled = true;
+}
+
 - (void)menuSelected:(NSString*)entry
 {
     NSString *jsStatement = [NSString stringWithFormat:@"window.%@(\"%@\");", [self.callbackIds objectForKey:@"menu"], entry];
@@ -125,8 +139,8 @@
     //NSString *jsStatement = [NSString stringWithFormat:@"window.%@();", [self.callbackIds objectForKey:@"organize"]];
     //NSLog(@"Organize pressed: %@", jsStatement);
 	//[self writeJavascript:jsStatement];
-    AppDelegate *myApp = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    MainViewController *controller = (MainViewController*)myApp.viewController;// as MainViewController;
+    //AppDelegate *myApp = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    //MainViewController *controller = (MainViewController*)myApp.viewController;// as MainViewController;
 }
 
 - (void)back: (id) sender

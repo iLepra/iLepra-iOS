@@ -23,6 +23,9 @@
 
 - (void)registerCallback:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 
+- (void)disableInteractions:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+- (void)enableInteractions:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+
 - (void)menuSelected:(NSString*)entry;
 
 @end
