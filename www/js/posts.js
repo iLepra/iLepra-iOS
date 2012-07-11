@@ -1,5 +1,3 @@
-var lastPages = [];
-
 (function(){
     var postLimit = iLepra.config.postIncrement,
         postsList = null,
@@ -35,13 +33,6 @@ var lastPages = [];
 
         });
     }
-
-    $(document).on("pagebeforechange", function(e, ui){
-        if( $.mobile.activePage && !ui.options.reverse ){
-            var id = "#"+$.mobile.activePage.attr('id');
-            if( lastPages.indexOf(id) == -1 ) lastPages.push(id);
-        }
-    })
 
     // render page on creation
     $(document).on('pagecreate', "#postsPage", function(event){
@@ -187,15 +178,7 @@ var lastPages = [];
         $.mobile.changePage("#fullPostPage");
     });
 
-    // render full post text
-    $(document).on('pagebeforeshow', "#fullPostPage", function(){
-        // render html
-        $("#postContent").html(iLepra.post.current.body);
-
-        // render additional info
-        $("#postUser").text(iLepra.post.current.user);
-        $("#postComments").text(iLepra.post.current.comments);
-        $("#postTime").text(iLepra.post.current.when);
-        $("#postRating").text(iLepra.post.current.rating);
-    });
+    window.cleanpostsPage = function(){
+        postsList.empty();
+    };
 })();

@@ -17,7 +17,8 @@ var profileName;
         }else{
             window.plugins.nativeUI.setTitle({organize: false, refresh: false, back: true, title: profileName});
         }        
-
+    });
+    $(document).on('pagebeforehide', "#profilePage", function(){
         $("#profileContent").hide();
     });
     $(document).on('pageshow', "#profilePage", function(){

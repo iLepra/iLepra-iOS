@@ -60,4 +60,8 @@
         });
         iLepra.getFavourites();
     });
+
+    window.cleanfavsPage = function(){
+        favsList.empty();
+    };
 })();

@@ -61,4 +61,8 @@
         });
         iLepra.getMyStuff();
     });
+
+    window.cleanmystuffPage = function(){
+        mystuffList.empty();
+    };
 })();

@@ -1,3 +1,5 @@
+var lastPages = [];
+
 (function(){
     var handleImageError = function(element){
         $(element).parents('li').removeClass('ui-li-has-thumb');
@@ -23,4 +25,12 @@
 
 	    // window.oniLepraMainChange - change of main posts
 	});
+
+    // storing nav history
+    $(document).on("pagebeforechange", function(e, ui){
+        if( $.mobile.activePage && !ui.options.reverse ){
+            var id = "#"+$.mobile.activePage.attr('id');
+            if( lastPages.indexOf(id) == -1 ) lastPages.push(id);
+        }
+    });
 })();

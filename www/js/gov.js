@@ -3,7 +3,7 @@
     $(document).on('pagebeforeshow', "#govPage", function(){
         window.plugins.nativeUI.setTitle({title: "Белый дом", organize: false, refresh: false, menu: true});
     });
-    $(document).on('pagebeforeshow', "#govPage", function(){
+    $(document).on('pageshow', "#govPage", function(){
         $.mobile.showPageLoadingMsg();
         
         $(document).bind(iLepra.events.ready, function(event){

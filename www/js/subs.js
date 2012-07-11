@@ -28,8 +28,6 @@
         window.plugins.nativeUI.setTitle({title: "Подлепры", organize: false, refresh: false, menu: true});
 
         lastPages = ["#subsPage"];
-    	
-        subsList.empty();
     });
     $(document).on('pageshow', "#subsPage", function(){
         if( iLepra.sub.fetch ){
@@ -109,11 +107,14 @@
             }
         });
     });
+    $(document).on('pagebeforehide', "#subpostsPage", function(){
+        subpostsList.empty();
+    });
     $(document).on('pagebeforeshow', "#subpostsPage", function(){
-        try{
-            subpostsList.empty();
-        }catch(e){};
         window.plugins.nativeUI.setTitle({title: subName, organize: false, refresh: false, back: true});
+    });
+    $(document).on('pageshow', "#subpostsPage", function(){
+        $.mobile.showPageLoadingMsg();
 
         // on posts data
         $(document).bind(iLepra.events.ready, function(event){
@@ -130,7 +131,8 @@
         // get posts
         iLepra.sub.getPosts(subUrl);
     });
-    $(document).on('pageshow', "#subpostsPage", function(){
-        $.mobile.showPageLoadingMsg();
-    });
+
+    window.cleansubsPage = function(){
+        subsList.empty();
+    };
 })();

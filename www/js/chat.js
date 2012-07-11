@@ -65,17 +65,19 @@
     });
     $(document).on('pagebeforehide', "#chatPage", function(){
         clearInterval( refreshInterval );
+
+        chatList.empty();
     });
     $(document).on('pagebeforeshow', "#chatPage", function(){
         window.plugins.nativeUI.setTitle({title: "Лепрочятик", organize: false, refresh: false, menu: true});
-
-        requestNewChatData(true);
 
         // set refresh interval
         refreshInterval = window.setInterval(requestNewChatData, 10000 );
     });
     $(document).on('pageshow', "#chatPage", function(){
-        $.mobile.showPageLoadingMsg()
+        requestNewChatData(true);
+
+        $.mobile.showPageLoadingMsg();
     });
 
     $(document).on("tap", "li.chatMessage", function(e){

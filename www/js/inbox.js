@@ -29,7 +29,7 @@
 
         updateNewsCounts();
     });
-    $(document).on('pagebeforeshow', "#inboxPage", function(){
+    $(document).on('pageshow', "#inboxPage", function(){
         $.mobile.showPageLoadingMsg();
 
         $(document).bind(iLepra.events.ready, function(event){
@@ -61,4 +61,8 @@
         });
         iLepra.getInbox();
     });
+
+    window.cleaninboxPage = function(){
+        inboxList.empty();
+    };
 })();
