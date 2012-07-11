@@ -130,6 +130,7 @@
             $(document).unbind(event);
             $.mobile.hidePageLoadingMsg();
 
+            $.mobile.silentScroll(0);
             // clean old data & render
             renderNewPosts();
         });

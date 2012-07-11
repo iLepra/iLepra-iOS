@@ -226,7 +226,7 @@
         $("#commentsButtons").hide();
     });
     $(document).on('pagebeforeshow', "#fullPostPage", function(e, ui){
-        window.plugins.nativeUI.setTitle({title: "", organize: false, refresh: true, back: true});
+        window.plugins.nativeUI.setTitle({title: "Пост", organize: false, refresh: true, back: true});
 
         // render html
         $("#postContent").html(iLepra.post.current.body);

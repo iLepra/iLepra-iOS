@@ -93,6 +93,12 @@ CGPoint defaultCenter;
     [pickerSections addObject:@"Подлепры"];
     
     defaultCenter = MainView.center;
+    
+    // add geture recognizer to title
+    UITapGestureRecognizer *navSingleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(navSingleTap)];
+    navSingleTap.numberOfTapsRequired = 1;
+    [[MainToolbar.subviews objectAtIndex:1] setUserInteractionEnabled:YES];
+    [[MainToolbar.subviews objectAtIndex:1] addGestureRecognizer:navSingleTap];
 }
 
 - (void) viewDidUnload
@@ -299,5 +305,13 @@ CGPoint defaultCenter;
     [UIView setAnimationDuration: 0.25];
     MainView.center = center;
     [UIView commitAnimations];
+}
+
+-(void)navSingleTap
+{
+    NSLog(@"taptap");
+    CGPoint topOffset = CGPointMake(0, 0);
+    //[scrollView setContentOffset: topOffset animated: YES];
+    [[[self.webView subviews] lastObject] setContentOffset:topOffset animated:YES];
 }
 @end
