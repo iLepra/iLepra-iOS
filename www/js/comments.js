@@ -216,7 +216,7 @@
             $("#postVotedown").css("opacity", 1);
         }
     });
-    $(document).on('pagebeforehide', "#fullPostPage", function(e, ui){
+    $(document).on('pagehide', "#fullPostPage", function(e, ui){
         $("#postCommentsButtonsGroup").show();
 
         commentsList.empty();

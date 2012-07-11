@@ -129,7 +129,7 @@
             }
         });
     });
-    $(document).on('pagebeforehide', "#subpostsPage", function(){
+    $(document).on('pagehide', "#subpostsPage", function(){
         if( !cleanedSubsPosts ) currentPostsScroll = $(document).scrollTop();
         
         moreSubpostsBtn.hide();

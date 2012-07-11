@@ -2,67 +2,73 @@
     var animateTime = 220;
 
     var clearOld = function(){
-        var cleanFunc = window["clean" + $.mobile.activePage.attr('id')];
-        if( cleanFunc != null )
-            cleanFunc();
+        return window["clean" + $.mobile.activePage.attr('id')];
     }
 
     window.oniLepraMenuSelect = function(data){
         switch(data){
             case "Посты":
                 setTimeout(function(){
-                    clearOld();
+                    var cleanFunc = clearOld();
                     $.mobile.changePage("#postsPage");
+                    if( cleanFunc != null ) cleanFunc();
                 }, animateTime)
                 break;
             case "Мои вещи":
                 setTimeout(function(){
-                    clearOld();
+                    var cleanFunc = clearOld();
                     $.mobile.changePage("#mystuffPage");
+                    if( cleanFunc != null ) cleanFunc();
                 }, animateTime)
                 break;    
             case "Инбокс":
                 setTimeout(function(){
-                    clearOld();
+                    var cleanFunc = clearOld();
                     $.mobile.changePage("#inboxPage");
+                    if( cleanFunc != null ) cleanFunc();
                 }, animateTime)
                 break;
             case "Избранное":
                 setTimeout(function(){
-                    clearOld();
+                    var cleanFunc = clearOld();
                     $.mobile.changePage("#favsPage");
+                    if( cleanFunc != null ) cleanFunc();
                 }, animateTime)
                 break;    
             case "Мои подлепры":
                 setTimeout(function(){
-                    clearOld();
+                    var cleanFunc = clearOld();
                     iLepra.sub.list = iLepra.userSubLepras;
                     iLepra.sub.fetch = false;
                     $.mobile.changePage("#subsPage", {allowSamePageTransition: true});
+                    if( cleanFunc != null ) cleanFunc();
                 }, animateTime)
                 break;
             case "Блоги империи":
                 setTimeout(function(){
-                    clearOld();
+                    var cleanFunc = clearOld();
                     iLepra.sub.fetch = true;
                     $.mobile.changePage("#subsPage", {allowSamePageTransition: true});
+                    if( cleanFunc != null ) cleanFunc();
                 }, animateTime)
                 break;
             case "Белый дом":
                 setTimeout(function(){
-                    clearOld();
+                    var cleanFunc = clearOld();
                     $.mobile.changePage("#govPage");
+                    if( cleanFunc != null ) cleanFunc();
                 }, animateTime)
                 break;            
             case "Чятик":
                 setTimeout(function(){
-                    clearOld();
+                    var cleanFunc = clearOld();
                     $.mobile.changePage("#chatPage");
+                    if( cleanFunc != null ) cleanFunc();
                 }, animateTime)
                 break;
             case "Выход":
                 setTimeout(function(){
-                    clearOld();
+                    var cleanFunc = clearOld();
                     $.mobile.showPageLoadingMsg();
                     $(document).bind(iLepra.events.ready, function(event){
                         $(document).unbind(event);
@@ -71,6 +77,7 @@
                             $(document).unbind(event);
                             // navigate to login page
                             $.mobile.changePage("#loginPage");
+                            if( cleanFunc != null ) cleanFunc();
                         });
                         iLepra.init();
                     });
@@ -82,8 +89,9 @@
             case "Профиль":
                 profileName = iLepra.username;
                 setTimeout(function(){
-                    clearOld();
+                    var cleanFunc = clearOld();
                     $.mobile.changePage("#profilePage");
+                    if( cleanFunc != null ) cleanFunc();
                 }, animateTime)
                 break;
         }

@@ -63,7 +63,7 @@
             iLepra.chat.sendMessage(text);
         });
     });
-    $(document).on('pagebeforehide', "#chatPage", function(){
+    $(document).on('pagehide', "#chatPage", function(){
         clearInterval( refreshInterval );
 
         chatList.empty();
