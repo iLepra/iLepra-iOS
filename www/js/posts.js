@@ -2,7 +2,8 @@
     var postLimit = iLepra.config.postIncrement,
         postsList = null,
         morePostsBtn = null,
-        showLoader = true;
+        cleaned = true,
+        currentScroll = 0;
 
     var renderNewPosts = function(){
         // render posts
@@ -83,7 +84,12 @@
             iLepra.switchLayout(2);
         });
     });
+    $(document).on('pagebeforehide', "#postsPage", function(event){
+        if( !cleaned ) currentScroll = $(document).scrollTop();
+    });
     $(document).on('pagebeforeshow', "#postsPage", function(event){
+        $.mobile.silentScroll(currentScroll);
+
         window.plugins.nativeUI.setTitle({title: "Главная", organize: true, refresh: true, menu: true});
 
         lastPages = ["#postsPage"];
@@ -94,13 +100,15 @@
         window.plugins.nativeUI.hideSplash();
     });
     $(document).on('pageshow', "#postsPage", function(event){
+        if( !cleaned ) return;
+
         $.mobile.showPageLoadingMsg();
 
         $(document).bind(iLepra.events.ready, function(event){
             $(document).unbind(event);
 
             // hide loading msg
-            showLoader = false;
+            cleaned = false;
             $.mobile.hidePageLoadingMsg();
 
             morePostsBtn.show();
@@ -179,6 +187,8 @@
     });
 
     window.cleanpostsPage = function(){
+        cleaned = true;
+        currentScroll = 0;
         postsList.empty();
     };
 })();

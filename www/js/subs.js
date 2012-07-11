@@ -6,7 +6,13 @@
         // dom
         subsList = null,
         subpostsList = null,
-        moreSubpostsBtn = null;
+        moreSubpostsBtn = null,
+
+        // cleaning
+        cleanedSubsList = true,
+        cleanedSubsPosts = true,
+        currentSubsScroll = 0,
+        currentPostsScroll = 0;
 
     var rendreNew = function(){
         // render posts
@@ -24,12 +30,26 @@
     $(document).on('pagecreate', "#subsPage", function(){
         subsList = $("#subsList");
     });
+    $(document).on('pagebeforehide', "#subsPage", function(){
+        if( !cleanedSubsList ) currentSubsScroll = $(document).scrollTop();
+    });
     $(document).on('pagebeforeshow', "#subsPage", function(){
+        $.mobile.silentScroll(currentSubsScroll);
+        
         window.plugins.nativeUI.setTitle({title: "Подлепры", organize: false, refresh: false, menu: true});
 
         lastPages = ["#subsPage"];
+
+        // clean sub 
+        if( subpostsList != null ){
+            currentPostsScroll = 0;
+            cleanedSubsPosts = true;
+            subpostsList.empty();
+        }
     });
     $(document).on('pageshow', "#subsPage", function(){
+        if( !cleanedSubsList ) return;
+
         if( iLepra.sub.fetch ){
             $.mobile.showPageLoadingMsg();
 
@@ -39,10 +59,12 @@
                 // hide loading msg
                 $.mobile.hidePageLoadingMsg();
 
+                cleanedSubsList = false;
                 rendreNew();
             });
             iLepra.sub.getList();
         }else{
+            cleanedSubsList = false;
             rendreNew();
         }
     });
@@ -108,12 +130,18 @@
         });
     });
     $(document).on('pagebeforehide', "#subpostsPage", function(){
-        subpostsList.empty();
+        if( !cleanedSubsPosts ) currentPostsScroll = $(document).scrollTop();
+        
+        moreSubpostsBtn.hide();
     });
     $(document).on('pagebeforeshow', "#subpostsPage", function(){
+        $.mobile.silentScroll(currentPostsScroll);
+
         window.plugins.nativeUI.setTitle({title: subName, organize: false, refresh: false, back: true});
     });
     $(document).on('pageshow', "#subpostsPage", function(){
+        if( !cleanedSubsPosts ) return;
+
         $.mobile.showPageLoadingMsg();
 
         // on posts data
@@ -123,6 +151,7 @@
             // hide loading msg
             $.mobile.hidePageLoadingMsg();
 
+            cleanedSubsPosts = false;
             moreSubpostsBtn.show();
 
             renderNewPosts();
@@ -133,6 +162,8 @@
     });
 
     window.cleansubsPage = function(){
+        currentSubsScroll = 0;
+        cleanedSubsList = true;
         subsList.empty();
     };
 })();
