@@ -6,9 +6,9 @@
  to you under the Apache License, Version 2.0 (the
  "License"); you may not use this file except in compliance
  with the License.  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing,
  software distributed under the License is distributed on an
  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -21,8 +21,8 @@
 //  MainViewController.h
 //  iLepra
 //
-//  Created by Tim Ermilov on 7/2/12.
-//  Copyright Uni Leipzig 2012. All rights reserved.
+//  Created by ___FULLUSERNAME___ on ___DATE___.
+//  Copyright ___ORGANIZATIONNAME___ ___YEAR___. All rights reserved.
 //
 
 #import "MainViewController.h"
@@ -37,28 +37,43 @@
 @synthesize MenuButton;
 
 CGPoint defaultCenter;
+UIView* myWebView;
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        //SectionPicker.hidden = true;
     }
     return self;
 }
 
-- (void) didReceiveMemoryWarning
+- (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
 
-- (void) viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
+{
+    // Set the main view to utilize the entire application frame space of the device.
+    // Change this to suit your view's UI footprint needs in your application.
+
+    UIView* rootView = [[[[UIApplication sharedApplication] keyWindow] rootViewController] view];
+    CGRect webViewFrame = [[[rootView subviews] objectAtIndex:0] frame];  // first subview is the UIWebView
+
+    if (CGRectEqualToRect(webViewFrame, CGRectZero)) { // UIWebView is sized according to its parent, here it hasn't been sized yet
+        self.view.frame = [[UIScreen mainScreen] applicationFrame]; // size UIWebView's parent according to application frame, which will in turn resize the UIWebView
+    }
+
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -101,7 +116,7 @@ CGPoint defaultCenter;
     [[MainToolbar.subviews objectAtIndex:1] addGestureRecognizer:navSingleTap];
 }
 
-- (void) viewDidUnload
+- (void)viewDidUnload
 {
     [self setMenuView:nil];
     [self setMenuButton:nil];
@@ -115,13 +130,14 @@ CGPoint defaultCenter;
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return [super shouldAutorotateToInterfaceOrientation:interfaceOrientation];
 }
 
 /* Comment out the block below to over-ride */
+
 /*
 - (CDVCordovaView*) newCordovaViewWithFrame:(CGRect)bounds
 {
@@ -130,24 +146,25 @@ CGPoint defaultCenter;
 */
 
 /* Comment out the block below to over-ride */
+
 /*
 #pragma CDVCommandDelegate implementation
 
 - (id) getCommandInstance:(NSString*)className
 {
-	return [super getCommandInstance:className];
+    return [super getCommandInstance:className];
 }
 
 - (BOOL) execute:(CDVInvokedUrlCommand*)command
 {
-	return [super execute:command];
+    return [super execute:command];
 }
 
 - (NSString*) pathForResource:(NSString*)resourcepath;
 {
-	return [super pathForResource:resourcepath];
+    return [super pathForResource:resourcepath];
 }
- 
+
 - (void) registerPlugin:(CDVPlugin*)plugin withClassName:(NSString*)className
 {
     return [super registerPlugin:plugin withClassName:className];
@@ -156,47 +173,43 @@ CGPoint defaultCenter;
 
 #pragma UIWebDelegate implementation
 
-- (void) webViewDidFinishLoad:(UIWebView*) theWebView 
+- (void)webViewDidFinishLoad:(UIWebView*)theWebView
 {
-    // only valid if ___PROJECTNAME__-Info.plist specifies a protocol to handle
-    if (self.invokeString)
-    {
-        // this is passed before the deviceready event is fired, so you can access it in js when you receive deviceready
-        NSString* jsString = [NSString stringWithFormat:@"var invokeString = \"%@\";", self.invokeString];
-        [theWebView stringByEvaluatingJavaScriptFromString:jsString];
-    }
+    myWebView = theWebView;
     
-    [theWebView removeFromSuperview];
-    [MainView addSubview:theWebView]; 
-     
     // Black base color for background matches the native apps
-    theWebView.backgroundColor = [UIColor blackColor];
+    myWebView.backgroundColor = [UIColor blackColor];
     
-    CGRect bounds = theWebView.frame;
+    CGRect bounds = myWebView.frame;
     bounds.origin.y = 44;
-    bounds.size.height -= 44; 
+    bounds.size.height -= 44;
     
-    theWebView.frame = bounds;
+    myWebView.frame = bounds;
+    
+    UIView* rootView = [[[[UIApplication sharedApplication] keyWindow] rootViewController] view];
+    [rootView bringSubviewToFront:myWebView];
+    [rootView bringSubviewToFront:SplashView];
 
-	return [super webViewDidFinishLoad:theWebView];
+    return [super webViewDidFinishLoad:theWebView];
 }
 
 /* Comment out the block below to over-ride */
+
 /*
 
-- (void) webViewDidStartLoad:(UIWebView*)theWebView 
+- (void) webViewDidStartLoad:(UIWebView*)theWebView
 {
-	return [super webViewDidStartLoad:theWebView];
+    return [super webViewDidStartLoad:theWebView];
 }
 
-- (void) webView:(UIWebView*)theWebView didFailLoadWithError:(NSError*)error 
+- (void) webView:(UIWebView*)theWebView didFailLoadWithError:(NSError*)error
 {
-	return [super webView:theWebView didFailLoadWithError:error];
+    return [super webView:theWebView didFailLoadWithError:error];
 }
 
 - (BOOL) webView:(UIWebView*)theWebView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
 {
-	return [super webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
+    return [super webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
 }
 */
 
@@ -245,7 +258,7 @@ CGPoint defaultCenter;
     cell.textLabel.textColor = [UIColor whiteColor];
 }
 
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section 
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 24)];
     [headerView setBackgroundColor:[UIColor darkGrayColor]];
@@ -255,7 +268,7 @@ CGPoint defaultCenter;
 	headerLabel.backgroundColor = [UIColor clearColor];
 	headerLabel.opaque = NO;
 	headerLabel.textColor = [UIColor whiteColor];
-	headerLabel.highlightedTextColor = [UIColor lightGrayColor]; 
+	headerLabel.highlightedTextColor = [UIColor lightGrayColor];
 	headerLabel.font = [UIFont boldSystemFontOfSize:16];
 	headerLabel.frame = CGRectMake(10.0, 0.0, (tableView.bounds.size.width - 10.0), 24.0);
     
@@ -288,14 +301,17 @@ CGPoint defaultCenter;
     [self toggleMenu];
 }
 
-- (void)toggleMenu 
+- (void)toggleMenu
 {
     CGPoint center = MainView.center;
+    CGPoint webcenter = myWebView.center;
     if( center.x == defaultCenter.x ){
         center.x = defaultCenter.x + 255;
+        webcenter.x = defaultCenter.x + 255;
         self.webView.userInteractionEnabled = false;
     }else{
         center.x = defaultCenter.x;
+        webcenter.x = defaultCenter.x;
         self.webView.userInteractionEnabled = true;
     }
     
@@ -304,6 +320,7 @@ CGPoint defaultCenter;
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration: 0.25];
     MainView.center = center;
+    myWebView.center = webcenter;
     [UIView commitAnimations];
 }
 
@@ -314,4 +331,5 @@ CGPoint defaultCenter;
     //[scrollView setContentOffset: topOffset animated: YES];
     [[[self.webView subviews] lastObject] setContentOffset:topOffset animated:YES];
 }
+
 @end

@@ -1,0 +1,3 @@
+[submodule "Resources/html/lepra"]
+	path = Resources/html/lepra
+	url = git://github.com/iLepra/iLepra-jslib.git

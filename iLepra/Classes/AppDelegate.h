@@ -6,9 +6,9 @@
  to you under the Apache License, Version 2.0 (the
  "License"); you may not use this file except in compliance
  with the License.  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing,
  software distributed under the License is distributed on an
  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -21,34 +21,28 @@
 //  AppDelegate.h
 //  iLepra
 //
-//  Created by Tim Ermilov on 7/2/12.
-//  Copyright Uni Leipzig 2012. All rights reserved.
+//  Created by ___FULLUSERNAME___ on ___DATE___.
+//  Copyright ___ORGANIZATIONNAME___ ___YEAR___. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-#ifdef CORDOVA_FRAMEWORK
-    #import <Cordova/CDVViewController.h>
-#else
-    #import "CDVViewController.h"
-#endif
+#import <Cordova/CDVViewController.h>
 
 #import "../Plugins/NativeUI.h"
 
-
-@interface AppDelegate : NSObject < UIApplicationDelegate > {
+@interface AppDelegate : NSObject <UIApplicationDelegate>{
     CDVPlugin* nativeUI;
 }
 
 @property (nonatomic, retain) CDVPlugin* nativeUI;
 
-// invoke string is passed to your app on launch, this is only valid if you 
+// invoke string is passed to your app on launch, this is only valid if you
 // edit iLepra-Info.plist to add a protocol
-// a simple tutorial can be found here : 
+// a simple tutorial can be found here :
 // http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
 
-@property (nonatomic) IBOutlet UIWindow* window;
-@property (nonatomic) IBOutlet CDVViewController* viewController;
+@property (nonatomic, strong) IBOutlet UIWindow* window;
+@property (nonatomic, strong) IBOutlet CDVViewController* viewController;
 
 @end
-

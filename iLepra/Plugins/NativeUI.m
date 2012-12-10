@@ -45,6 +45,8 @@
 
 - (void)hideSplash:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
 {
+    NSLog(@"hideSplash");
+    
     AppDelegate *myApp = (AppDelegate*)[UIApplication sharedApplication].delegate;
     MainViewController *controller = (MainViewController*)myApp.viewController;
     controller.SplashView.hidden = true;
