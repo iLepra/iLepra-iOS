@@ -499,6 +499,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Timofey Ermilov (JKD8LN5KKY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Timofey Ermilov (JKD8LN5KKY)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -509,6 +511,8 @@
 				INFOPLIST_FILE = "iLepra/iLepra-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = iLepra;
+				PROVISIONING_PROFILE = "2759EFE2-3BFA-4DD4-8ED3-AB538D983F24";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2759EFE2-3BFA-4DD4-8ED3-AB538D983F24";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -519,6 +523,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Timofey Ermilov";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Timofey Ermilov";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iLepra/iLepra-Prefix.pch";
@@ -527,6 +533,8 @@
 				INFOPLIST_FILE = "iLepra/iLepra-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = iLepra;
+				PROVISIONING_PROFILE = "A00F11D5-8D7E-491B-BCF2-F2EDC2811CF7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A00F11D5-8D7E-491B-BCF2-F2EDC2811CF7";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
