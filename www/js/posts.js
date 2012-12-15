@@ -17,7 +17,7 @@
         try{
             postsList.listview('refresh');
         }catch(e){}
-    }
+    };
 
     ////// LAYOUT STUFF
     var prepareLayoutReadyEvent = function(){
@@ -31,9 +31,8 @@
 
             // clean old data & render
             renderNewPosts();
-
         });
-    }
+    };
 
     // render page on creation
     $(document).on('pagecreate', "#postsPage", function(event){
@@ -147,36 +146,37 @@
         currentPostId = $(this).data('id');
 
         // get selected post
+        var i;
         if( $.mobile.activePage.attr('id') == "postsPage" ){
-            for(var i in iLepra.latestPosts){
+            for(i in iLepra.latestPosts){
                 if(iLepra.latestPosts[i].id == currentPostId){
                     iLepra.post.current = iLepra.latestPosts[i];
                     break;
                 }
             }
         }else if( $.mobile.activePage.attr('id') == "mystuffPage" ){
-            for(var i in iLepra.myStuffPosts){
+            for(i in iLepra.myStuffPosts){
                 if(iLepra.myStuffPosts[i].id == currentPostId){
                     iLepra.post.current = iLepra.myStuffPosts[i];
                     break;
                 }
             }
         }else if( $.mobile.activePage.attr('id') == "inboxPage" ){
-            for(var i in iLepra.inboxPosts){
+            for(i in iLepra.inboxPosts){
                 if(iLepra.inboxPosts[i].id == currentPostId){
                     iLepra.post.current = iLepra.inboxPosts[i];
                     break;
                 }
             }
         }else if( $.mobile.activePage.attr('id') == "favsPage" ){
-            for(var i in iLepra.favouritePosts){
+            for(i in iLepra.favouritePosts){
                 if(iLepra.favouritePosts[i].id == currentPostId){
                     iLepra.post.current = iLepra.favouritePosts[i];
                     break;
                 }
             }
         }else if( $.mobile.activePage.attr('id') == "subpostsPage"){
-            for(var i in iLepra.sub.posts){
+            for(i in iLepra.sub.posts){
                 if(iLepra.sub.posts[i].id == currentPostId){
                     iLepra.post.current = iLepra.sub.posts[i];
                     break;
@@ -190,6 +190,8 @@
     window.cleanpostsPage = function(){
         cleaned = true;
         currentScroll = 0;
+
+        if( $.mobile.activePage.attr('id') == "postsPage" ) return;
         postsList.empty();
     };
 })();

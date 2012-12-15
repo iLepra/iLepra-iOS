@@ -2,7 +2,7 @@ window.addEventListener('load', function(){
     // jquery mobile stuff
     $.support.cors = true;
     $.mobile.allowCrossDomainPages = true;
-    $.mobile.pushStateEnabled = false;
+    $.mobile.phonegapNavigationEnabled = true;
     $.mobile.loadingMessageTextVisible = true;
     $.mobile.loadingMessage = "Загружаемся ...";
     $.mobile.fixedtoolbar.prototype.options.tapToggle = false;
@@ -34,5 +34,5 @@ window.addEventListener('load', function(){
             interactionDisabled = false;
         }
         oldHide();
-    }
+    };
 });

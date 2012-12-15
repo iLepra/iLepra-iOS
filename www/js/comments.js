@@ -10,6 +10,9 @@
         newPos = -1,
 
         // dom
+        moreCommentsButton = null,
+        allCommentsButton = null,
+        commentsButtons = null,
         commentsList = null,
         commentsNav = null,
         commentsNavBtns = null,
@@ -18,16 +21,17 @@
 
     var renderNewComments = function(){
         // render posts
-        var p = "";
+        var p = "",
+            limit, i;
 
         if( type == "all" ){
-            var limit = commentsLimit > iLepra.post.comments.length ? iLepra.post.comments.length : commentsLimit;
-            for(var i = 0; i < limit; i++){
+            limit = commentsLimit > iLepra.post.comments.length ? iLepra.post.comments.length : commentsLimit;
+            for(i = 0; i < limit; i++){
                 p += _.template(commentTemplate, iLepra.post.comments[i]);
             }
         }else if( type == "new" ){
-            var limit = commentsLimit > iLepra.post.newComments.length ? iLepra.post.newComments.length : commentsLimit;
-            for(var i = 0; i < limit; i++){
+            limit = commentsLimit > iLepra.post.newComments.length ? iLepra.post.newComments.length : commentsLimit;
+            for(i = 0; i < limit; i++){
                 p += _.template(commentTemplate, iLepra.post.newComments[i]);
             }
         }
@@ -42,11 +46,11 @@
         }else{
             commentsNav.hide();
         }
-    }
+    };
 
     var prepareCommentsButtons = function(){
         // more posts click
-        $("#moreCommentsButton").bind("tap", function(e){
+        moreCommentsButton.bind("tap", function(e){
             // stops event to prevent random post opening
             e.preventDefault();
             e.stopPropagation();
@@ -61,18 +65,18 @@
             renderNewComments();
             commentsList.listview('refresh');
         });
-        $("#allCommentsButton").bind("tap", function(e){
+        allCommentsButton.bind("tap", function(e){
             // stops event to prevent random post opening
             e.preventDefault();
             e.stopPropagation();
 
             commentsLimit = iLepra.post.comments.length;
-            $("#commentsButtons").hide();
+            commentsButtons.hide();
 
             // clean old data
             renderNewComments();
         });
-    }
+    };
 
     // refresh
     window.oniLepraDoRefreshPost = function(){
@@ -85,6 +89,10 @@
     // on post comments show
     $(document).on('pagecreate', "#fullPostPage", function(){
         commentsLimit = iLepra.config.postIncrement;
+
+        moreCommentsButton = $("#moreCommentsButton");
+        allCommentsButton = $("#allCommentsButton");
+        commentsButtons = $("#commentsButtons");
 
         commentsList = $("#commentsList");
         commentsNav = $("#commentsNavBar");
@@ -141,7 +149,7 @@
 
             if(--newPos) newPos = 0;
             var com = $($("ul#commentsList li.new")[newPos]);
-            if( com != null) $.mobile.silentScroll(com.offset().top);
+            if( com !== null) $.mobile.silentScroll(com.offset().top);
         });
 
         $("#nextnew").bind("tap", function(e){
@@ -151,7 +159,7 @@
             var newComs = $("ul#commentsList li.new");
             if( ++newPos > (newComs.length-1) ) newPos = newComs.length-1;
             var com = $(newComs[newPos]);
-            if( com != null) $.mobile.silentScroll(com.offset().top);
+            if( com !== null) $.mobile.silentScroll(com.offset().top);
         });
 
         $("#postVoteup").bind("tap", function(e){
@@ -223,10 +231,16 @@
         commentsNav.hide();
         $("#postCommentsContent").hide();
         $("#replyPost").hide();
-        $("#commentsButtons").hide();
+        commentsButtons.hide();
     });
     $(document).on('pagebeforeshow', "#fullPostPage", function(e, ui){
         window.plugins.nativeUI.setTitle({title: "Пост", organize: false, refresh: true, back: true});
+
+        // reset comments limit
+        commentsLimit = iLepra.config.postIncrement;
+
+        // show comments buttons again
+        commentsButtons.show();
 
         // render html
         $("#postContent").html(iLepra.post.current.body);
@@ -318,7 +332,7 @@
         });
 
         iLepra.post.getComments();
-    }
+    };
 
     // on add comment show
     var showCommentAdd = function(){
@@ -326,10 +340,10 @@
         commentsNavBtns.hide();
         commentsInputBar.show();
 
-        if( commentUser != null ){
+        if( commentUser !== null ){
             commentsInput.val(commentUser+": ");
         }else{
             commentsInput.val("");
         }
-    }
+    };
 })();

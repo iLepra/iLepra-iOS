@@ -17,7 +17,7 @@
         try{
             inboxList.listview('refresh');
         }catch(e){}
-    }
+    };
 
     // render page on creation
     $(document).on('pagecreate', "#inboxPage", function(){
@@ -76,6 +76,8 @@
     window.cleaninboxPage = function(){
         cleaned = true;
         currentScroll = 0;
+
+        if( $.mobile.activePage.attr('id') == "inboxPage" ) return;
         inboxList.empty();
     };
 })();

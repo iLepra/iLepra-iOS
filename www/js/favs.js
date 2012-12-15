@@ -18,7 +18,7 @@
         try{
             favsList.listview('refresh');
         }catch(e){}
-    }
+    };
 
     // render page on creation
     $(document).on('pagecreate', "#favsPage", function(){
@@ -75,6 +75,8 @@
     window.cleanfavsPage = function(){
         cleaned = true;
         currentScroll = 0;
+
+        if( $.mobile.activePage.attr('id') == "favsPage" ) return;
         favsList.empty();
     };
 })();

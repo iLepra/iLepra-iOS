@@ -16,7 +16,7 @@ var profileName;
             window.plugins.nativeUI.setTitle({organize: false, refresh: false, menu: true, title: profileName});
         }else{
             window.plugins.nativeUI.setTitle({organize: false, refresh: false, back: true, title: profileName});
-        }        
+        }
     });
     $(document).on('pagehide', "#profilePage", function(){
         $("#profileContent").hide();
@@ -28,13 +28,13 @@ var profileName;
             $(document).unbind(event);
 
             // hide loading msg
-            $.mobile.hidePageLoadingMsg()
+            $.mobile.hidePageLoadingMsg();
             $("#profileContent").show();
 
             var data = iLepra.profile.data;
 
             // set userpic
-            if( data.userpic != undefined )
+            if( data.userpic !== undefined )
                 $("#userImage").attr('src', data.userpic);
 
             // basic info
@@ -58,7 +58,7 @@ var profileName;
                 link = /href="(.+?)"/g.exec(data.contacts[i]);
                 text = data.contacts[i].replace(/\s\s+/g, " ").replace(/[\n\r]/g, "").replace(/<.+?>/g, "");
                 if( text.length > 1 ){
-                    if( link != null ){
+                    if( link !== null ){
                         clist.append( $('<li><a href="'+link[1]+'">'+text+'</a></li>') );
                     }else{
                         clist.append( $('<li>'+text+'</li>') );
@@ -70,4 +70,6 @@ var profileName;
 
         iLepra.profile.getProfile(profileName);
     });
+
+    window.cleanprofilePage = function(){};
 })();

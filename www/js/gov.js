@@ -10,7 +10,7 @@
             $(document).unbind(event);
 
             // hide loading msg
-            $.mobile.hidePageLoadingMsg()
+            $.mobile.hidePageLoadingMsg();
 
             // render posts
             $("#president").html(
@@ -19,4 +19,6 @@
         });
         iLepra.gov.getCurrent();
     });
+
+    window.cleangovPage = function(){};
 })();

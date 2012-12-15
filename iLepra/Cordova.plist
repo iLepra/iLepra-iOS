@@ -32,6 +32,8 @@
 	</array>
 	<key>Plugins</key>
 	<dict>
+		<key>ChildBrowserCommand</key>
+		<string>ChildBrowserCommand</string>
 		<key>NativeUI</key>
 		<string>NativeUI</string>
 		<key>Device</key>

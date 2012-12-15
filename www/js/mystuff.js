@@ -17,7 +17,7 @@
         try{
             mystuffList.listview('refresh');
         }catch(e){}
-    }
+    };
 
     // render page on creation
     $(document).on('pagecreate', "#mystuffPage", function(){
@@ -60,14 +60,14 @@
             $(document).unbind(event);
 
             // hide loading msg
-            $.mobile.hidePageLoadingMsg()
+            $.mobile.hidePageLoadingMsg();
 
             cleaned = false;
             renderNewPosts();
 
             // hide button if needed
             if( postLimit < iLepra.myStuffPosts.length ){
-                mystuffMoreBtn.show();                
+                mystuffMoreBtn.show();
             }
         });
         iLepra.getMyStuff();
@@ -76,6 +76,8 @@
     window.cleanmystuffPage = function(){
         cleaned = true;
         currentScroll = 0;
+
+        if( $.mobile.activePage.attr('id') == "mystuffPage" ) return;
         mystuffList.empty();
     };
 })();

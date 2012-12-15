@@ -24,7 +24,7 @@
         try{
             subsList.listview('refresh');
         }catch(e){}
-    }
+    };
 
     // render page on creation
     $(document).on('pagecreate', "#subsPage", function(){
@@ -40,8 +40,8 @@
 
         lastPages = ["#subsPage"];
 
-        // clean sub 
-        if( subpostsList != null ){
+        // clean sub
+        if( subpostsList !== null ){
             currentPostsScroll = 0;
             cleanedSubsPosts = true;
             subpostsList.empty();
@@ -92,7 +92,7 @@
         try{
             subpostsList.listview('refresh');
         }catch(e){}
-    }
+    };
 
     $(document).on('pagecreate', "#subpostsPage", function(){
         subpostsList = $("#subpostsList");

@@ -17,21 +17,21 @@
         chatList.append(p);
         // redraw styles
         chatList.listview('refresh');
-    }
+    };
 
     var requestNewChatData = function(isInit){
         $(document).bind(iLepra.events.ready, function(event){
             $(document).unbind(event);
             data = iLepra.chat.messages.slice(0);
-            data.sort(function(a,b){ return a.id > b.id ? -1 : 1});
+            data.sort(function(a,b){ return a.id > b.id ? -1 : 1; });
             refreshMessages();
             if( typeof isInit != 'undefined' && isInit ){
                 // hide loading msg
-                $.mobile.hidePageLoadingMsg()
+                $.mobile.hidePageLoadingMsg();
             }
         });
         iLepra.chat.getMessages();
-    }
+    };
 
     // render page on creation
     $(document).on('pagecreate', "#chatPage", function(){
@@ -54,7 +54,7 @@
                 $.mobile.hidePageLoadingMsg();
                 // get data
                 data = iLepra.chat.messages.slice(0);
-                data.sort(function(a,b){ return a.id > b.id ? -1 : 1});
+                data.sort(function(a,b){ return a.id > b.id ? -1 : 1; });
                 // render
                 refreshMessages();
                 // put refresh interval back
@@ -88,4 +88,6 @@
 
         chatInput.val(username+": ");
     });
+
+    window.cleanchatPage = function(){};
 })();
