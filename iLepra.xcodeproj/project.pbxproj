@@ -28,6 +28,7 @@
 		22A3E818167CCE530017A463 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3E817167CCE530017A463 /* Default.png */; };
 		22A3E81A167CCE580017A463 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3E819167CCE580017A463 /* Default@2x.png */; };
 		22A3E81C167CD1E50017A463 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3E81B167CD1E40017A463 /* Default-568h@2x.png */; };
+		22C94BD41684AF9E004D2716 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C94BD31684AF9E004D2716 /* icon-72.png */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
 		301BF570109A69640062928A /* www in Resources */ = {isa = PBXBuildFile; fileRef = 301BF56E109A69640062928A /* www */; };
@@ -95,6 +96,7 @@
 		22A3E817167CCE530017A463 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		22A3E819167CCE580017A463 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		22A3E81B167CD1E40017A463 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		22C94BD31684AF9E004D2716 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				22C94BD31684AF9E004D2716 /* icon-72.png */,
 				22A3E81B167CD1E40017A463 /* Default-568h@2x.png */,
 				22A3E819167CCE580017A463 /* Default@2x.png */,
 				22A3E817167CCE530017A463 /* Default.png */,
@@ -411,6 +414,7 @@
 				22A3E818167CCE530017A463 /* Default.png in Resources */,
 				22A3E81A167CCE580017A463 /* Default@2x.png in Resources */,
 				22A3E81C167CD1E50017A463 /* Default-568h@2x.png in Resources */,
+				22C94BD41684AF9E004D2716 /* icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,8 +503,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_OBJCPP_ARC_ABI = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Timofey Ermilov (JKD8LN5KKY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Timofey Ermilov (JKD8LN5KKY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -511,8 +515,8 @@
 				INFOPLIST_FILE = "iLepra/iLepra-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = iLepra;
-				PROVISIONING_PROFILE = "2759EFE2-3BFA-4DD4-8ED3-AB538D983F24";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2759EFE2-3BFA-4DD4-8ED3-AB538D983F24";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;

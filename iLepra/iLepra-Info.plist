@@ -14,7 +14,6 @@
 	<array>
 		<string>icon@2x.png</string>
 		<string>icon-ipad.png</string>
-		<string>icon-72@2x.png</string>
 		<string>icon-ipad@2x.png</string>
 		<string>icon.png</string>
 	</array>
@@ -26,7 +25,6 @@
 			<array>
 				<string>icon@2x.png</string>
 				<string>icon-ipad.png</string>
-				<string>icon-72@2x.png</string>
 				<string>icon-ipad@2x.png</string>
 				<string>icon.png</string>
 			</array>
